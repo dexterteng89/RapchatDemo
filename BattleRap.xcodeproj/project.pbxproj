@@ -19,6 +19,28 @@
 		1DA4A8CA1723F5CA00580656 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8C91723F5CA00580656 /* QuartzCore.framework */; };
 		1DA4A8CC1723F5D100580656 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8CB1723F5D100580656 /* Security.framework */; };
 		1DA4A8CE1723F62500580656 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8CD1723F62500580656 /* SoundCloud.bundle */; };
+		1DA4A8E41724950700580656 /* noreclip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8E31724950700580656 /* noreclip.wav */; };
+		1DA4A8FE1724956100580656 /* ModalNavBar-L6-T0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */; };
+		1DA4A8FF1724956100580656 /* ModalNavBar-L6-T0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */; };
+		1DA4A9001724956100580656 /* ModalNavRectBtn-L4-T0-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8EB1724956000580656 /* ModalNavRectBtn-L4-T0-normal.png */; };
+		1DA4A9011724956100580656 /* ModalNavRectBtn-L4-T0-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8EC1724956000580656 /* ModalNavRectBtn-L4-T0-normal@2x.png */; };
+		1DA4A9021724956100580656 /* nothin.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8ED1724956000580656 /* nothin.mov */; };
+		1DA4A9071724956100580656 /* PlayRecButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F21724956000580656 /* PlayRecButton.png */; };
+		1DA4A9081724956100580656 /* PlayRecButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F31724956000580656 /* PlayRecButton@2x.png */; };
+		1DA4A9091724956100580656 /* RecordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F41724956000580656 /* RecordButton.png */; };
+		1DA4A90A1724956100580656 /* RecordButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F51724956000580656 /* RecordButton@2x.png */; };
+		1DA4A90B1724956100580656 /* RetryButton_L6_T6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F61724956000580656 /* RetryButton_L6_T6.png */; };
+		1DA4A90C1724956100580656 /* RetryButton_L6_T6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F71724956000580656 /* RetryButton_L6_T6@2x.png */; };
+		1DA4A90D1724956100580656 /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F81724956000580656 /* retryButton.png */; };
+		1DA4A90E1724956100580656 /* retryButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8F91724956000580656 /* retryButton@2x.png */; };
+		1DA4A90F1724956100580656 /* SendButton_L6_T6.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8FA1724956100580656 /* SendButton_L6_T6.png */; };
+		1DA4A9101724956100580656 /* SendButton_L6_T6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8FB1724956100580656 /* SendButton_L6_T6@2x.png */; };
+		1DA4A9111724956100580656 /* sendButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8FC1724956100580656 /* sendButton.png */; };
+		1DA4A9121724956100580656 /* sendButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8FD1724956100580656 /* sendButton@2x.png */; };
+		1DA4A9151724957B00580656 /* UIToolbarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9131724957B00580656 /* UIToolbarBG.png */; };
+		1DA4A9161724957B00580656 /* UIToolbarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */; };
+		1DA4A919172496C700580656 /* CancelRecButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A917172496C700580656 /* CancelRecButton.png */; };
+		1DA4A91A172496C700580656 /* CancelRecButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A918172496C700580656 /* CancelRecButton@2x.png */; };
 		1DE4B1FE1723AE7000154B90 /* verse.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B1FD1723AE7000154B90 /* verse.m4a */; };
 		1DE4B23C1723AFF200154B90 /* BRBattleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B23B1723AFF200154B90 /* BRBattleStore.m */; };
 		1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */; };
@@ -162,6 +184,28 @@
 		1DA4A8C91723F5CA00580656 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1DA4A8CB1723F5D100580656 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1DA4A8CD1723F62500580656 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SoundCloud.bundle; sourceTree = "<group>"; };
+		1DA4A8E31724950700580656 /* noreclip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noreclip.wav; sourceTree = "<group>"; };
+		1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavBar-L6-T0.png"; sourceTree = "<group>"; };
+		1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavBar-L6-T0@2x.png"; sourceTree = "<group>"; };
+		1DA4A8EB1724956000580656 /* ModalNavRectBtn-L4-T0-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavRectBtn-L4-T0-normal.png"; sourceTree = "<group>"; };
+		1DA4A8EC1724956000580656 /* ModalNavRectBtn-L4-T0-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavRectBtn-L4-T0-normal@2x.png"; sourceTree = "<group>"; };
+		1DA4A8ED1724956000580656 /* nothin.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = nothin.mov; sourceTree = "<group>"; };
+		1DA4A8F21724956000580656 /* PlayRecButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayRecButton.png; sourceTree = "<group>"; };
+		1DA4A8F31724956000580656 /* PlayRecButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlayRecButton@2x.png"; sourceTree = "<group>"; };
+		1DA4A8F41724956000580656 /* RecordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordButton.png; sourceTree = "<group>"; };
+		1DA4A8F51724956000580656 /* RecordButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordButton@2x.png"; sourceTree = "<group>"; };
+		1DA4A8F61724956000580656 /* RetryButton_L6_T6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RetryButton_L6_T6.png; sourceTree = "<group>"; };
+		1DA4A8F71724956000580656 /* RetryButton_L6_T6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RetryButton_L6_T6@2x.png"; sourceTree = "<group>"; };
+		1DA4A8F81724956000580656 /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retryButton.png; sourceTree = "<group>"; };
+		1DA4A8F91724956000580656 /* retryButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retryButton@2x.png"; sourceTree = "<group>"; };
+		1DA4A8FA1724956100580656 /* SendButton_L6_T6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SendButton_L6_T6.png; sourceTree = "<group>"; };
+		1DA4A8FB1724956100580656 /* SendButton_L6_T6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendButton_L6_T6@2x.png"; sourceTree = "<group>"; };
+		1DA4A8FC1724956100580656 /* sendButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendButton.png; sourceTree = "<group>"; };
+		1DA4A8FD1724956100580656 /* sendButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sendButton@2x.png"; sourceTree = "<group>"; };
+		1DA4A9131724957B00580656 /* UIToolbarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIToolbarBG.png; sourceTree = "<group>"; };
+		1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIToolbarBG@2x.png"; sourceTree = "<group>"; };
+		1DA4A917172496C700580656 /* CancelRecButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelRecButton.png; sourceTree = "<group>"; };
+		1DA4A918172496C700580656 /* CancelRecButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelRecButton@2x.png"; sourceTree = "<group>"; };
 		1DE4B1FD1723AE7000154B90 /* verse.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = verse.m4a; path = ../verse.m4a; sourceTree = "<group>"; };
 		1DE4B23A1723AFF200154B90 /* BRBattleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBattleStore.h; sourceTree = "<group>"; };
 		1DE4B23B1723AFF200154B90 /* BRBattleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBattleStore.m; sourceTree = "<group>"; };
@@ -274,8 +318,30 @@
 		6973A253172352540027C514 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
+				1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */,
+				1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */,
+				1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */,
+				1DA4A8EB1724956000580656 /* ModalNavRectBtn-L4-T0-normal.png */,
+				1DA4A8EC1724956000580656 /* ModalNavRectBtn-L4-T0-normal@2x.png */,
+				1DA4A8ED1724956000580656 /* nothin.mov */,
+				1DA4A8F21724956000580656 /* PlayRecButton.png */,
+				1DA4A8F31724956000580656 /* PlayRecButton@2x.png */,
+				1DA4A8F41724956000580656 /* RecordButton.png */,
+				1DA4A8F51724956000580656 /* RecordButton@2x.png */,
+				1DA4A8F61724956000580656 /* RetryButton_L6_T6.png */,
+				1DA4A8F71724956000580656 /* RetryButton_L6_T6@2x.png */,
+				1DA4A8F81724956000580656 /* retryButton.png */,
+				1DA4A8F91724956000580656 /* retryButton@2x.png */,
+				1DA4A8FA1724956100580656 /* SendButton_L6_T6.png */,
+				1DA4A8FB1724956100580656 /* SendButton_L6_T6@2x.png */,
+				1DA4A8FC1724956100580656 /* sendButton.png */,
+				1DA4A8FD1724956100580656 /* sendButton@2x.png */,
+				1DA4A8E31724950700580656 /* noreclip.wav */,
 				1DE4B1FD1723AE7000154B90 /* verse.m4a */,
 				6973A2551723526F0027C514 /* PauseButton.png */,
+				1DA4A917172496C700580656 /* CancelRecButton.png */,
+				1DA4A918172496C700580656 /* CancelRecButton@2x.png */,
 				6973A2561723526F0027C514 /* PauseButton@2x.png */,
 				6973A2571723526F0027C514 /* PlayButton.png */,
 				6973A2581723526F0027C514 /* PlayButton@2x.png */,
@@ -551,6 +617,28 @@
 				1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */,
 				1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */,
 				1DA4A8CE1723F62500580656 /* SoundCloud.bundle in Resources */,
+				1DA4A8E41724950700580656 /* noreclip.wav in Resources */,
+				1DA4A8FE1724956100580656 /* ModalNavBar-L6-T0.png in Resources */,
+				1DA4A8FF1724956100580656 /* ModalNavBar-L6-T0@2x.png in Resources */,
+				1DA4A9001724956100580656 /* ModalNavRectBtn-L4-T0-normal.png in Resources */,
+				1DA4A9011724956100580656 /* ModalNavRectBtn-L4-T0-normal@2x.png in Resources */,
+				1DA4A9021724956100580656 /* nothin.mov in Resources */,
+				1DA4A9071724956100580656 /* PlayRecButton.png in Resources */,
+				1DA4A9081724956100580656 /* PlayRecButton@2x.png in Resources */,
+				1DA4A9091724956100580656 /* RecordButton.png in Resources */,
+				1DA4A90A1724956100580656 /* RecordButton@2x.png in Resources */,
+				1DA4A90B1724956100580656 /* RetryButton_L6_T6.png in Resources */,
+				1DA4A90C1724956100580656 /* RetryButton_L6_T6@2x.png in Resources */,
+				1DA4A90D1724956100580656 /* retryButton.png in Resources */,
+				1DA4A90E1724956100580656 /* retryButton@2x.png in Resources */,
+				1DA4A90F1724956100580656 /* SendButton_L6_T6.png in Resources */,
+				1DA4A9101724956100580656 /* SendButton_L6_T6@2x.png in Resources */,
+				1DA4A9111724956100580656 /* sendButton.png in Resources */,
+				1DA4A9121724956100580656 /* sendButton@2x.png in Resources */,
+				1DA4A9151724957B00580656 /* UIToolbarBG.png in Resources */,
+				1DA4A9161724957B00580656 /* UIToolbarBG@2x.png in Resources */,
+				1DA4A919172496C700580656 /* CancelRecButton.png in Resources */,
+				1DA4A91A172496C700580656 /* CancelRecButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

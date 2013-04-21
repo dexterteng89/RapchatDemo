@@ -36,11 +36,36 @@
     return self;
 }
 
+- (int)getFriendIDFromName:(NSString *)friendName
+{
+    NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
+    NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
+    NSArray *orderedHandles = [me objectForKey:@"handle"];
+    
+    for (int i = 0; i < orderedHandles.count; i++)
+    {
+        if ([[orderedHandles objectAtIndex:i] isEqual:friendName])
+        {
+            int friendID = [[[users objectAtIndex:i] valueForKey:@"id"] integerValue];
+            return friendID;
+        }
+    }
+    return 0;
+}
+
 - (void)createBattleWith:(NSString *)friendName
 {
-    NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"id"];
+    NSNumber *userid = [NSNumber numberWithInt:[[[NSUserDefaults standardUserDefaults] objectForKey:@"id"] integerValue]];
+
+    NSNumber *friendID = [NSNumber numberWithInt:[self getFriendIDFromName:friendName]];
     
-    NSDictionary *postDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"nil", @"category",userid,@"user_id",friendName,@"friend_handle", nil];
+    
+    NSMutableDictionary *postDictionary = [[NSMutableDictionary alloc] init];
+    
+    [postDictionary setValue:@"nil" forKey:@"category"];
+    [postDictionary setValue:userid forKey:@"user_id"];
+    [postDictionary setValue:friendID forKey:@"friend_id"];
+    
     
     NSError *error;
     
@@ -110,6 +135,8 @@
 - (void)populateBattles
 {
     int rap_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"id"];
+    
+    
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSString *stringAPICall = [NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/users/%i/battles", rap_id];

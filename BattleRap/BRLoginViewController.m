@@ -43,11 +43,7 @@
 - (IBAction)login:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:usernameField.text forKey:@"handle"];
-    
-    //change later when you find out how to get id right after POST
-    int rap_id = 2;
-    [defaults setInteger:rap_id forKey:@"id"];
-    //end
+    [self postUserInformation];
     
     [defaults synchronize];
     
@@ -76,6 +72,9 @@
     [request setHTTPBody: file1Data];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
+    BRBattleStore *battleStore = [BRBattleStore sharedStore];
+    [battleStore populateUsers];
+
 }
 
 - (IBAction) loginSC:(id) sender

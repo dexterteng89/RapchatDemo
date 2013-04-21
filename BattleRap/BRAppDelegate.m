@@ -31,7 +31,7 @@
     
     
     [self.window setRootViewController:navController];
-
+    [self applyStylesheet];
     
     self.window.backgroundColor = [UIColor whiteColor];
 
@@ -64,6 +64,40 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)applyStylesheet {
+	// Navigation bar
+	UINavigationBar *navigationBar = [UINavigationBar appearance];
+	[navigationBar setBackgroundImage:[[UIImage imageNamed:@"ModalNavBar-L6-T0.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] forBarMetrics:UIBarMetricsDefault];
+	[navigationBar setTitleVerticalPositionAdjustment:-1.0f forBarMetrics:UIBarMetricsDefault];
+	[navigationBar setTitleTextAttributes:[[NSDictionary alloc] initWithObjectsAndKeys:
+										   [UIFont fontWithName:@"Avenir-Medium" size:20.0], UITextAttributeFont,
+										   [UIColor colorWithWhite:0.0f alpha:0.2f], UITextAttributeTextShadowColor,
+										   [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
+										   [UIColor whiteColor], UITextAttributeTextColor,
+										   nil]];
+    
+    
+    NSDictionary *barButtonTitleTextAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:
+												  [UIFont fontWithName:@"Avenir-Medium" size:14.0], UITextAttributeFont,
+												  [UIColor colorWithWhite:0.0f alpha:0.2f], UITextAttributeTextShadowColor,
+												  [NSValue valueWithUIOffset:UIOffsetMake(0.0f, 1.0f)], UITextAttributeTextShadowOffset,
+												  nil];
+	UIBarButtonItem *barButton = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+	//	[barButton setTitlePositionAdjustment:UIOffsetMake(0.0f, 1.0f) forBarMetrics:UIBarMetricsDefault];
+	[barButton setTitleTextAttributes:barButtonTitleTextAttributes forState:UIControlStateNormal];
+	[barButton setTitleTextAttributes:barButtonTitleTextAttributes forState:UIControlStateHighlighted];
+	[barButton setBackgroundImage:[[UIImage imageNamed:@"ModalNavRectBtn-L4-T0-normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [barButton setTitlePositionAdjustment: UIOffsetMake(1.0f, 2.0f) forBarMetrics:UIBarMetricsDefault];
+    
+	
+	// Navigation back button
+	[barButton setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, -1.0f) forBarMetrics:UIBarMetricsDefault];
+	[barButton setBackButtonBackgroundImage:[[UIImage imageNamed:@"ModalNavRectBtn-L4-T0-normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    
 }
 
 @end
