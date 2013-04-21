@@ -41,15 +41,15 @@
 		1DA4A9161724957B00580656 /* UIToolbarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */; };
 		1DA4A919172496C700580656 /* CancelRecButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A917172496C700580656 /* CancelRecButton.png */; };
 		1DA4A91A172496C700580656 /* CancelRecButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A918172496C700580656 /* CancelRecButton@2x.png */; };
-		1DE4B1FE1723AE7000154B90 /* verse.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B1FD1723AE7000154B90 /* verse.m4a */; };
+		1DA4A9251724A02900580656 /* verse.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9241724A02900580656 /* verse.m4a */; };
+		1DA4A92A1724A06700580656 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9261724A06700580656 /* PauseButton.png */; };
+		1DA4A92B1724A06700580656 /* PauseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9271724A06700580656 /* PauseButton@2x.png */; };
+		1DA4A92C1724A06700580656 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9281724A06700580656 /* PlayButton.png */; };
+		1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A9291724A06700580656 /* PlayButton@2x.png */; };
 		1DE4B23C1723AFF200154B90 /* BRBattleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE4B23B1723AFF200154B90 /* BRBattleStore.m */; };
 		1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */; };
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
-		6973A2591723526F0027C514 /* PauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6973A2551723526F0027C514 /* PauseButton.png */; };
-		6973A25A1723526F0027C514 /* PauseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6973A2561723526F0027C514 /* PauseButton@2x.png */; };
-		6973A25B1723526F0027C514 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6973A2571723526F0027C514 /* PlayButton.png */; };
-		6973A25C1723526F0027C514 /* PlayButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6973A2581723526F0027C514 /* PlayButton@2x.png */; };
 		69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E91639172399EF00A0F9BF /* LoginView.xib */; };
 		69E9163D17239C6500A0F9BF /* BRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9163C17239C6500A0F9BF /* BRLoginViewController.m */; };
 		69EB536817230856002E0127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB536717230856002E0127 /* UIKit.framework */; };
@@ -206,16 +206,16 @@
 		1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIToolbarBG@2x.png"; sourceTree = "<group>"; };
 		1DA4A917172496C700580656 /* CancelRecButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelRecButton.png; sourceTree = "<group>"; };
 		1DA4A918172496C700580656 /* CancelRecButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelRecButton@2x.png"; sourceTree = "<group>"; };
-		1DE4B1FD1723AE7000154B90 /* verse.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = verse.m4a; path = ../verse.m4a; sourceTree = "<group>"; };
+		1DA4A9241724A02900580656 /* verse.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = verse.m4a; sourceTree = "<group>"; };
+		1DA4A9261724A06700580656 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PauseButton.png; sourceTree = "<group>"; };
+		1DA4A9271724A06700580656 /* PauseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PauseButton@2x.png"; sourceTree = "<group>"; };
+		1DA4A9281724A06700580656 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
+		1DA4A9291724A06700580656 /* PlayButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlayButton@2x.png"; sourceTree = "<group>"; };
 		1DE4B23A1723AFF200154B90 /* BRBattleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBattleStore.h; sourceTree = "<group>"; };
 		1DE4B23B1723AFF200154B90 /* BRBattleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBattleStore.m; sourceTree = "<group>"; };
 		1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRRecordViewController.xib; sourceTree = "<group>"; };
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
-		6973A2551723526F0027C514 /* PauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PauseButton.png; path = BattleRap/PauseButton.png; sourceTree = "<group>"; };
-		6973A2561723526F0027C514 /* PauseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PauseButton@2x.png"; path = "BattleRap/PauseButton@2x.png"; sourceTree = "<group>"; };
-		6973A2571723526F0027C514 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlayButton.png; path = BattleRap/PlayButton.png; sourceTree = "<group>"; };
-		6973A2581723526F0027C514 /* PlayButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PlayButton@2x.png"; path = "BattleRap/PlayButton@2x.png"; sourceTree = "<group>"; };
 		69E91639172399EF00A0F9BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		69E9163B17239C6500A0F9BF /* BRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLoginViewController.h; sourceTree = "<group>"; };
 		69E9163C17239C6500A0F9BF /* BRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLoginViewController.m; sourceTree = "<group>"; };
@@ -319,6 +319,10 @@
 			isa = PBXGroup;
 			children = (
 				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
+				1DA4A9261724A06700580656 /* PauseButton.png */,
+				1DA4A9271724A06700580656 /* PauseButton@2x.png */,
+				1DA4A9281724A06700580656 /* PlayButton.png */,
+				1DA4A9291724A06700580656 /* PlayButton@2x.png */,
 				1DA4A9141724957B00580656 /* UIToolbarBG@2x.png */,
 				1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */,
 				1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */,
@@ -326,6 +330,7 @@
 				1DA4A8EC1724956000580656 /* ModalNavRectBtn-L4-T0-normal@2x.png */,
 				1DA4A8ED1724956000580656 /* nothin.mov */,
 				1DA4A8F21724956000580656 /* PlayRecButton.png */,
+				1DA4A9241724A02900580656 /* verse.m4a */,
 				1DA4A8F31724956000580656 /* PlayRecButton@2x.png */,
 				1DA4A8F41724956000580656 /* RecordButton.png */,
 				1DA4A8F51724956000580656 /* RecordButton@2x.png */,
@@ -338,13 +343,8 @@
 				1DA4A8FC1724956100580656 /* sendButton.png */,
 				1DA4A8FD1724956100580656 /* sendButton@2x.png */,
 				1DA4A8E31724950700580656 /* noreclip.wav */,
-				1DE4B1FD1723AE7000154B90 /* verse.m4a */,
-				6973A2551723526F0027C514 /* PauseButton.png */,
 				1DA4A917172496C700580656 /* CancelRecButton.png */,
 				1DA4A918172496C700580656 /* CancelRecButton@2x.png */,
-				6973A2561723526F0027C514 /* PauseButton@2x.png */,
-				6973A2571723526F0027C514 /* PlayButton.png */,
-				6973A2581723526F0027C514 /* PlayButton@2x.png */,
 			);
 			name = Resources;
 			path = ..;
@@ -607,12 +607,7 @@
 				69EB537A17230856002E0127 /* Default.png in Resources */,
 				69EB537C17230857002E0127 /* Default@2x.png in Resources */,
 				69EB537E17230857002E0127 /* Default-568h@2x.png in Resources */,
-				6973A2591723526F0027C514 /* PauseButton.png in Resources */,
-				6973A25A1723526F0027C514 /* PauseButton@2x.png in Resources */,
-				6973A25B1723526F0027C514 /* PlayButton.png in Resources */,
-				6973A25C1723526F0027C514 /* PlayButton@2x.png in Resources */,
 				69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */,
-				1DE4B1FE1723AE7000154B90 /* verse.m4a in Resources */,
 				1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */,
 				1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */,
 				1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */,
@@ -639,6 +634,11 @@
 				1DA4A9161724957B00580656 /* UIToolbarBG@2x.png in Resources */,
 				1DA4A919172496C700580656 /* CancelRecButton.png in Resources */,
 				1DA4A91A172496C700580656 /* CancelRecButton@2x.png in Resources */,
+				1DA4A9251724A02900580656 /* verse.m4a in Resources */,
+				1DA4A92A1724A06700580656 /* PauseButton.png in Resources */,
+				1DA4A92B1724A06700580656 /* PauseButton@2x.png in Resources */,
+				1DA4A92C1724A06700580656 /* PlayButton.png in Resources */,
+				1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

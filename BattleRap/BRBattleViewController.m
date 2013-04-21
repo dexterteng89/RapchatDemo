@@ -22,7 +22,7 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     
     if (self) {
-        self.navigationItem.title = @"ME vs. Brian"; //link up to data here
+        self.navigationItem.title = @"ME vs. @WesDearborn"; //link up to data here
         
         self.tableView.backgroundColor =
                 [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0];
@@ -99,7 +99,7 @@
         if (indexPath.row == 0) {
             cell.textLabel.text = @"My Verse";
         } else {
-            cell.textLabel.text = @"Brian's Verse";
+            cell.textLabel.text = @"@WesDearborn's Verse";
         }            
         return cell;
     }
