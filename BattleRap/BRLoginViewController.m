@@ -40,8 +40,33 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:usernameField.text forKey:@"handle"];
     [defaults synchronize];
+    [self postUserInformation];
     [self.presentingViewController dismissViewControllerAnimated:YES
                                                       completion:nil];
+}
+
+- (void)postUserInformation
+{
+    NSString *userHandle = [[NSUserDefaults standardUserDefaults] objectForKey:@"handle"];
+    
+    NSDictionary *postDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:userHandle, @"handle", nil];
+    
+    NSError *error;
+    
+    NSData *file1Data = [NSJSONSerialization dataWithJSONObject:postDictionary options:0 error:&error];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/users"]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [file1Data length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody: file1Data];
+    
+    [NSURLConnection connectionWithRequest:request delegate:self];
+
 }
 
 #pragma mark - UITextViewDelegate methods
