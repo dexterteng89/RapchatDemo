@@ -37,6 +37,9 @@
 }
 
 - (IBAction)login:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:usernameField.text forKey:@"handle"];
+    [defaults synchronize];
     [self.presentingViewController dismissViewControllerAnimated:YES
                                                       completion:nil];
 }

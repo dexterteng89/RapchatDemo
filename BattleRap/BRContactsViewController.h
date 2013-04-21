@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface BRContactsViewController : UITableViewController
+{
+    NSArray *userHandles;
+}
 
 @property (nonatomic, strong) NSIndexPath *checkedIndexPath;
 @property (nonatomic, copy) void (^dismissBlock) (void);

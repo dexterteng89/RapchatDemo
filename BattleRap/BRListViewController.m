@@ -48,6 +48,7 @@
 {
     [super viewWillAppear:animated];
     
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"handle"]);
     
     //login verification
     BRLoginViewController *lvc = [[BRLoginViewController alloc] init];
