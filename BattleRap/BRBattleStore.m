@@ -41,19 +41,76 @@
     
 }
 
-- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse
-{
-    
-}
+//- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse
+//{
+//    
+//}
 
-- (void)populateUsersWithArray:(NSMutableArray *)data
-{
-    users = data;
-}
 
 - (void)populateBattlesWithArray:(NSMutableArray *)data
 {
     battles = data;
 }
+
+- (void)populateUsers
+{
+    NSString *stringAPICall = @"http://rapchat-staging.herokuapp.com/users";
+    NSURLRequest* rapchatAPIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:stringAPICall]];
+    [NSURLConnection sendAsynchronousRequest:rapchatAPIRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^ void (NSURLResponse* myResponse, NSData* myData, NSError* theirError)
+     {
+         //begin parse method
+         users = [self parseDataWithResponse:myResponse andData:myData andError:theirError];
+         [self.delegate usersDidFinishPostingUsers:users];
+     }];
+}
+
+- (id)parseDataWithResponse:(NSURLResponse*)myResponse andData:(NSData*)myData andError:(NSError*)theirError
+{
+    
+    if (theirError)
+    {
+        NSLog(@"RapChatAPIError: %@", [theirError description]);
+        return nil;
+    }
+    else
+    {
+        NSError *jsonError;
+        NSArray *arrayFromJSON = (NSArray *)[NSJSONSerialization JSONObjectWithData:myData
+                                                                            options:NSJSONReadingAllowFragments
+                                                                              error:&jsonError];
+        return arrayFromJSON;
+    }
+}
+
+- (NSMutableArray *)getUsers
+{
+    return users;
+    
+}
+
+- (void)populateBattles
+{
+    int rap_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"id"];
+    
+    NSString *stringAPICall = [NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/users/%i/battles", rap_id];
+    NSURLRequest* rapchatAPIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:stringAPICall]];
+    [NSURLConnection sendAsynchronousRequest:rapchatAPIRequest
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^ void (NSURLResponse* myResponse, NSData* myData, NSError* theirError)
+     {
+         //begin parse method
+         battles = [self parseDataWithResponse:myResponse andData:myData andError:theirError];
+         [self.delegate usersDidFinishPostingBattles:battles];
+     }];
+}
+
+- (NSMutableArray *)getBattles
+{
+    return battles;
+}
+
+
 
 @end

@@ -36,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBattleStoreDelegate.h; sourceTree = "<group>"; };
 		1DE4B1FD1723AE7000154B90 /* verse.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = verse.m4a; path = ../verse.m4a; sourceTree = "<group>"; };
 		1DE4B23A1723AFF200154B90 /* BRBattleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBattleStore.h; sourceTree = "<group>"; };
 		1DE4B23B1723AFF200154B90 /* BRBattleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBattleStore.m; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 			children = (
 				1DE4B23A1723AFF200154B90 /* BRBattleStore.h */,
 				1DE4B23B1723AFF200154B90 /* BRBattleStore.m */,
+				1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */,
 			);
 			name = Models;
 			sourceTree = "<group>";

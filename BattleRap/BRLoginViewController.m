@@ -7,9 +7,12 @@
 //
 
 #import "BRLoginViewController.h"
+#import "BRBattleStore.h"
 
 @interface BRLoginViewController ()
-
+{
+    NSArray *userArray;
+}
 @end
 
 @implementation BRLoginViewController
@@ -39,8 +42,14 @@
 - (IBAction)login:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:usernameField.text forKey:@"handle"];
+    
+    //change later when you find out how to get id right after POST
+    int rap_id = 2;
+    [defaults setInteger:rap_id forKey:@"id"];
+    //end
+    
     [defaults synchronize];
-    [self postUserInformation];
+    
     [self.presentingViewController dismissViewControllerAnimated:YES
                                                       completion:nil];
 }
@@ -66,8 +75,9 @@
     [request setHTTPBody: file1Data];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
-
 }
+
+
 
 #pragma mark - UITextViewDelegate methods
 

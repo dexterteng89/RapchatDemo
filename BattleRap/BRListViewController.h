@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BRBattleStoreDelegate.h"
 
-@interface BRListViewController : UITableViewController
+@interface BRListViewController : UITableViewController <BRBattleStoreDelegate>
 
 @end

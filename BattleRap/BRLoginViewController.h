@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BRLoginViewController : UIViewController <UITextFieldDelegate>
+
+@interface BRLoginViewController : UIViewController <UITextFieldDelegate, NSURLConnectionDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 - (IBAction)login:(id)sender;

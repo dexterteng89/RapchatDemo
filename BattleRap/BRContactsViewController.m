@@ -8,6 +8,7 @@
 
 #import "BRContactsViewController.h"
 #import "BRRecordViewController.h"
+#import "BRBattleStore.h"
 
 @implementation BRContactsViewController
 @synthesize dismissBlock, checkedIndexPath;
@@ -36,42 +37,15 @@
     [super viewDidLoad];
 
     self.tableView.tableFooterView = [[UIView alloc] init];
-    [self doNSURLRequestThenparse];
-}
-
-- (void)doNSURLRequestThenparse
-{
-    NSString *stringAPICall = @"http://rapchat-staging.herokuapp.com/users";
-    NSURLRequest* rapchatAPIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:stringAPICall]];
-    [NSURLConnection sendAsynchronousRequest:rapchatAPIRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^ void (NSURLResponse* myResponse, NSData* myData, NSError* theirError)
-     {
-          if((userHandles = [self parseDataWithResponse:myResponse andData:myData andError:theirError]) == nil)
-          {
-              NSLog(@"Some shit went wrong");
-          }
-         [self.tableView reloadData];
-     }];
-}
-
-- (id)parseDataWithResponse:(NSURLResponse*)myResponse andData:(NSData*)myData andError:(NSError*)theirError
-{
     
-    if (theirError)
-    {
-        NSLog(@"RapChatAPIError: %@", [theirError description]);
-        return nil;
-    }
-    else
-    {
-        NSError *jsonError;
-        NSArray *arrayFromJSON = (NSArray *)[NSJSONSerialization JSONObjectWithData:myData
-                                                                            options:NSJSONReadingAllowFragments
-                                                                              error:&jsonError];
-        return arrayFromJSON;
-    }
+    BRBattleStore *battleStore = [BRBattleStore sharedStore];
+    
+    userHandles = (NSArray *)[battleStore getUsers];
+    
+    [self.tableView reloadData];
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -110,14 +84,6 @@
     }
     
     // Configure the cell...
-//    if (indexPath.row == 0) {
-//        cell.textLabel.text = @"Brian";
-//    } else if (indexPath.row == 1) {
-//        cell.textLabel.text = @"Dexter";
-//    } else if (indexPath.row == 2) {
-//        cell.textLabel.text = @"James";
-//    }
-    
     cell.textLabel.text = [[userHandles objectAtIndex:[indexPath row]] valueForKey:@"handle"];
     
     if ([self.checkedIndexPath isEqual:indexPath])

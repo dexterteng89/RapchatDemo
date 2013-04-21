@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BRVerse.h"
+//#import "BRVerse.h"
+#import "BRBattleStoreDelegate.h"
+
 
 @interface BRBattleStore : NSObject
 {
@@ -15,13 +17,18 @@
     NSMutableArray *users;
 }
 
+@property (strong, nonatomic) id <BRBattleStoreDelegate> delegate;
+
 + (BRBattleStore *)sharedStore;
 
-- (void)populateUsersWithArray:(NSMutableArray *)data;
-- (void)populateBattlesWithArray:(NSMutableArray *)data;
+- (void)populateUsers;
+- (NSMutableArray *)getUsers;
+
+- (void)populateBattles;
+- (NSMutableArray *)getBattles;
 
 - (void)createBattleWith:(NSString *)friendName;
 - (void)addBattleWith:(NSString *)friendName;
-- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse;
+//- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse;
 
 @end
