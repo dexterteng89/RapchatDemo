@@ -73,7 +73,7 @@
             {
                 
                 [defaults setInteger:[[[users objectAtIndex:i] valueForKey:@"id"] integerValue]  forKey:@"id"];
-                
+                [defaults synchronize];
                 break;
             }
         }

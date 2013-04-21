@@ -11,6 +11,9 @@
 #import "BRBattleStore.h"
 
 @implementation BRContactsViewController
+{
+    BRBattleStore *battleStore;
+}
 @synthesize dismissBlock, checkedIndexPath;
 
 - (id)init
@@ -38,7 +41,7 @@
 
     self.tableView.tableFooterView = [[UIView alloc] init];
     
-    BRBattleStore *battleStore = [BRBattleStore sharedStore];
+    battleStore = [BRBattleStore sharedStore];
     
     userHandles = (NSArray *)[battleStore getUsers];
     
@@ -154,6 +157,7 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     self.checkedIndexPath = indexPath;
     
+    [battleStore createBattleWith:cell.textLabel.text];
     
     recordViewController.dismissBlock = dismissBlock;
     

@@ -38,7 +38,25 @@
 
 - (void)createBattleWith:(NSString *)friendName
 {
+    NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"id"];
     
+    NSDictionary *postDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"nil", @"category",userid,@"user_id",friendName,@"friend_handle", nil];
+    
+    NSError *error;
+    
+    NSData *file1Data = [NSJSONSerialization dataWithJSONObject:postDictionary options:0 error:&error];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/battles"]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%d", [file1Data length]] forHTTPHeaderField:@"Content-Length"];
+    [request setHTTPBody: file1Data];
+    
+    [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 //- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse
@@ -87,12 +105,12 @@
 - (NSMutableArray *)getUsers
 {
     return users;
-    
 }
 
 - (void)populateBattles
 {
     int rap_id = [[NSUserDefaults standardUserDefaults] integerForKey:@"id"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSString *stringAPICall = [NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/users/%i/battles", rap_id];
     NSURLRequest* rapchatAPIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:stringAPICall]];
@@ -110,7 +128,5 @@
 {
     return battles;
 }
-
-
 
 @end

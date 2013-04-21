@@ -16,6 +16,7 @@
     AVAudioPlayer *player;
 }
 
+
 @property (nonatomic, strong) AVAudioPlayer *backgroundbeat;
 @property (nonatomic, copy) void (^dismissBlock) (void);
 

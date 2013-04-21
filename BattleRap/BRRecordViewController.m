@@ -211,6 +211,7 @@
     [self presentModalViewController:shareViewController animated:YES];
 }
 
+
 #pragma mark - Private methods
 
 - (void)cancelBattle
