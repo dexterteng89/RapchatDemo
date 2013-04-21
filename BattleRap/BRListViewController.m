@@ -48,8 +48,9 @@
     battleStore = [BRBattleStore sharedStore];
     battleStore.delegate = self;
     [self refreshData];
- 
     self.tableView.tableFooterView = [[UIView alloc] init];
+    [self.tableView reloadData];
+
 }
 
 - (void)refreshData
@@ -61,7 +62,7 @@
 - (void) usersDidFinishPostingUsers:(NSMutableArray *)users
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults integerForKey:@"id"] == nil) {
+    if ([defaults integerForKey:@"id"] == NAN) {
         NSString *name = [defaults objectForKey:@"handle"];
         NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
         NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];

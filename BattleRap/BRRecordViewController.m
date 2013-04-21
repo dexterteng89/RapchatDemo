@@ -7,6 +7,7 @@
 //
 
 #import "BRRecordViewController.h"
+#import "SCUI.h"
 
 @implementation BRRecordViewController
 @synthesize dismissBlock;
@@ -151,41 +152,64 @@
     // Dispose of any resources that can be recreated.
 }
 
+//- (IBAction)convertAndSendTapped:(id)sender
+//{
+//    //    NSDictionary *someDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"Dexter", @"handle", nil];
+//    //
+//    //    NSDictionary *topDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:someDictionary, @"user", nil];
+//    
+//    //http://4nmq.localtunnel.com
+//    //NSURL *url = [NSURL URLWithString:@"http://4c3k.localtunnel.com/users.json"];
+//    //http://rapchat-assets.s3.amazonaws.com/ << S3 thing
+//    //    NSData *file1Data = [NSJSONSerialization dataWithJSONObject:topDictionary options:0 error:&error];
+//    
+//    NSData *file1Data = [[NSData alloc] initWithContentsOfURL:recorder.url];
+//    
+////    NSString* newStr = [NSString stringWithUTF8String:[file1Data bytes]];
+////    
+////    NSMutableString *jsonRequest = [[NSMutableString alloc]init];
+////    [jsonRequest appendString:newStr];
+////    
+////    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
+//    
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"FILL IN THIS"]];
+//    
+//    
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+//    
+//    [request setHTTPMethod:@"POST"];
+//    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [request setValue:[NSString stringWithFormat:@"%d", [file1Data length]] forHTTPHeaderField:@"Content-Length"];
+//    [request setHTTPBody: file1Data];
+//    
+//    [NSURLConnection connectionWithRequest:request delegate:self];
+//    
+//}
+
 - (IBAction)convertAndSendTapped:(id)sender
 {
-    //    NSDictionary *someDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:@"Dexter", @"handle", nil];
-    //
-    //    NSDictionary *topDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:someDictionary, @"user", nil];
+    NSURL *trackURL = recorder.url;
     
-    //http://4nmq.localtunnel.com
-    //NSURL *url = [NSURL URLWithString:@"http://4c3k.localtunnel.com/users.json"];
-    //http://rapchat-assets.s3.amazonaws.com/ << S3 thing
-    //    NSData *file1Data = [NSJSONSerialization dataWithJSONObject:topDictionary options:0 error:&error];
+    SCShareViewController *shareViewController;
+    SCSharingViewControllerCompletionHandler handler;
     
-    NSData *file1Data = [[NSData alloc] initWithContentsOfURL:recorder.url];
-    
-//    NSString* newStr = [NSString stringWithUTF8String:[file1Data bytes]];
-//    
-//    NSMutableString *jsonRequest = [[NSMutableString alloc]init];
-//    [jsonRequest appendString:newStr];
-//    
-//    NSData *requestData = [NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"FILL IN THIS"]];
-    
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [file1Data length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: file1Data];
-    
-    [NSURLConnection connectionWithRequest:request delegate:self];
-    
+    handler = ^(NSDictionary *trackInfo, NSError *error) {
+        if (SC_CANCELED(error)) {
+            NSLog(@"Canceled!");
+        } else if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        } else {
+            NSLog(@"Uploaded track: %@", trackInfo);
+        }
+    };
+    shareViewController = [SCShareViewController
+                           shareViewControllerWithFileURL:trackURL
+                           completionHandler:handler];
+    [shareViewController setTitle:@"RAP BATTLE"];
+    [shareViewController setPrivate:YES];
+    [self presentModalViewController:shareViewController animated:YES];
 }
-
 
 #pragma mark - Private methods
 

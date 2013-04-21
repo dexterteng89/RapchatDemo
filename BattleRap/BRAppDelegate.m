@@ -8,8 +8,16 @@
 
 #import "BRAppDelegate.h"
 #import "BRListViewController.h"
+#import "SCUI.h"
 
 @implementation BRAppDelegate
+
++ (void) initialize
+{
+    [SCSoundCloud setClientID:@"3862011599336e748be1504d4f80af27"
+                       secret:@"6ed1e28b7c6d26ee8278655ae9fe9ddf"
+                  redirectURL:[NSURL URLWithString:@"rapchat.co://oauth"]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
