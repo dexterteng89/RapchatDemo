@@ -758,7 +758,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BattleRap/BattleRap-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$PROJECT_DIR/**";
+				HEADER_SEARCH_PATHS = "\"$PROJECT_DIR\"/**";
 				INFOPLIST_FILE = "BattleRap/BattleRap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
@@ -775,7 +775,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BattleRap/BattleRap-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$PROJECT_DIR/**";
+				HEADER_SEARCH_PATHS = "\"$PROJECT_DIR\"/**";
 				INFOPLIST_FILE = "BattleRap/BattleRap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
