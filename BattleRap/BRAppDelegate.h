@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BRAppDelegate : UIResponder <UIApplicationDelegate, UIAppearanceContainer>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (void)applyStylesheet;
 
 @end

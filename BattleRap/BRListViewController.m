@@ -28,7 +28,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     if (self) {
-        self.navigationItem.title = @"RapChat";
+        self.navigationItem.title = @"Rap Chat";
         
         UIBarButtonItem *createButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBattle)];
         
@@ -48,35 +48,48 @@
     battleStore = [BRBattleStore sharedStore];
     battleStore.delegate = self;
     [self refreshData];
- 
     self.tableView.tableFooterView = [[UIView alloc] init];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self refreshData];
+    [self.tableView reloadData];
 }
 
 - (void)refreshData
 {
     [battleStore populateUsers];
-    [battleStore populateBattles];
+    [self.tableView reloadData];
 }
 
 - (void) usersDidFinishPostingUsers:(NSMutableArray *)users
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults integerForKey:@"id"] == nil) {
-        NSString *name = [defaults objectForKey:@"handle"];
+        //NSString *name = [defaults objectForKey:@"handle"];
         NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
-        NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
-        NSArray *orderedHandles = [me objectForKey:@"handle"];
-        for (int i = 0; i < orderedHandles.count; i++)
-        {
-            if ([[orderedHandles objectAtIndex:i] isEqual:name])
-            {
-                
-                [defaults setInteger:[[[users objectAtIndex:i] valueForKey:@"id"] integerValue]  forKey:@"id"];
-                
-                break;
-            }
-        }
+        //NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
+        //NSArray *orderedHandles = [me objectForKey:@"handle"];
+        [defaults setInteger:23 forKey:@"id"];
+
+//        for (int i = 0; i < orderedHandles.count; i++)
+//        {
+//            if ([[orderedHandles objectAtIndex:i] isEqual:name])
+//            {
+//                
+//                [defaults setInteger:[[[users objectAtIndex:i] valueForKey:@"id"] integerValue]  forKey:@"id"];
+//                [defaults synchronize];
+//                [battleStore populateBattles];
+//                [self.tableView reloadData];
+//                break;
+//            }
+//        }
     }
+    [battleStore populateBattles];
+    [self.tableView reloadData];
     theUsers = (NSArray *)users;
 }
 
@@ -141,23 +154,30 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     // placeholder configuration
-//    if (indexPath.row == 0) {
-//        cell.textLabel.text = @"Me VS. Brian";
-//        cell.detailTextLabel.text = @"Round 2 - Your Turn!";
-//    } else if (indexPath.row == 1) {
-//        cell.textLabel.text = @"Scott VS. Me";
-//        cell.detailTextLabel.text = @"Round 3 - Scott's Turn!";
-//    }
     
     //Each cell is a battle with a user_id VS friend_id
     //numbers from id correlate to the cell in theUsers
     
-    int friend_id = [[[theBattles objectAtIndex:[indexPath row]] valueForKey:@"friend_id"] integerValue] - 1;
+    NSNumber *friend_id = [NSNumber numberWithInt:[[[theBattles objectAtIndex:[indexPath row]] valueForKey:@"friend_id"] integerValue]];
     
-    int user_id = [[[theBattles objectAtIndex:[indexPath row]] valueForKey:@"user_id"] integerValue] - 1;
+    NSNumber *user_id = [NSNumber numberWithInt:[[[theBattles objectAtIndex:[indexPath row]] valueForKey:@"user_id"] integerValue]];
     
-    NSString *rapResponder = [[theUsers objectAtIndex:friend_id] valueForKey:@"handle"];
-    NSString *rapStarter = [[theUsers objectAtIndex:user_id] valueForKey:@"handle"];
+    NSString* rapStarter;
+    NSString* rapResponder;
+    
+    for (NSDictionary *newDict in theUsers)
+    {
+        if ([[newDict objectForKey:@"id"] isEqual:user_id] )
+        {
+            rapStarter = [newDict valueForKey:@"handle"];
+        }
+        
+        
+        if ([[newDict objectForKey:@"id"] isEqual:friend_id]) {
+            rapResponder = [newDict valueForKey:@"handle"];
+        }
+    }
+    
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@ VS %@", rapStarter, rapResponder];
     

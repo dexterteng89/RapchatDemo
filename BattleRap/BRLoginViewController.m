@@ -8,6 +8,7 @@
 
 #import "BRLoginViewController.h"
 #import "BRBattleStore.h"
+#import "SCUI.h"
 
 @interface BRLoginViewController ()
 {
@@ -42,11 +43,7 @@
 - (IBAction)login:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:usernameField.text forKey:@"handle"];
-    
-    //change later when you find out how to get id right after POST
-    int rap_id = 2;
-    [defaults setInteger:rap_id forKey:@"id"];
-    //end
+    [self postUserInformation];
     
     [defaults synchronize];
     
@@ -75,9 +72,32 @@
     [request setHTTPBody: file1Data];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
+    BRBattleStore *battleStore = [BRBattleStore sharedStore];
+    [battleStore populateUsers];
+
 }
 
-
+- (IBAction) loginSC:(id) sender
+{
+    SCLoginViewControllerCompletionHandler handler = ^(NSError *error) {
+        if (SC_CANCELED(error)) {
+            NSLog(@"Canceled!");
+        } else if (error) {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        } else {
+            NSLog(@"Done!");
+        }
+    };
+    
+    [SCSoundCloud requestAccessWithPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
+        SCLoginViewController *loginViewController;
+        
+        loginViewController = [SCLoginViewController
+                               loginViewControllerWithPreparedURL:preparedURL
+                               completionHandler:handler];
+        [self presentModalViewController:loginViewController animated:YES];
+    }];
+}
 
 #pragma mark - UITextViewDelegate methods
 
