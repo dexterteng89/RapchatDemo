@@ -70,7 +70,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults integerForKey:@"id"] == nil) {
         //NSString *name = [defaults objectForKey:@"handle"];
-        NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
+        //NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
         //NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
         //NSArray *orderedHandles = [me objectForKey:@"handle"];
         [defaults setInteger:23 forKey:@"id"];

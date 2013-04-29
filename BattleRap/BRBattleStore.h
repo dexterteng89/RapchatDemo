@@ -28,7 +28,7 @@
 - (NSMutableArray *)getBattles;
 
 - (void)createBattleWith:(NSString *)friendName;
-- (void)addBattleWith:(NSString *)friendName;
+//- (void)addBattleWith:(NSString *)friendName;
 //- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse;
 
 @end
