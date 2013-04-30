@@ -18,6 +18,8 @@
     NSArray *theUsers;
     NSArray *theBattles;
 }
+- (void)createBattle;
+- (void)refreshData;
 @end
 
 @implementation BRListViewController
@@ -28,7 +30,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     
     if (self) {
-        self.navigationItem.title = @"Rap Chat";
+        self.navigationItem.title = @"PASS THE MIC";
         
         UIBarButtonItem *createButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBattle)];
         
@@ -42,67 +44,22 @@
     return [self init];
 }
 
+#pragma mark - UIViewController Methods
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     battleStore = [BRBattleStore sharedStore];
     battleStore.delegate = self;
     [self refreshData];
     self.tableView.tableFooterView = [[UIView alloc] init];
-
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self refreshData];
-    [self.tableView reloadData];
-}
-
-- (void)refreshData
-{
-    [battleStore populateUsers];
-    [self.tableView reloadData];
-}
-
-- (void) usersDidFinishPostingUsers:(NSMutableArray *)users
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults integerForKey:@"id"] == nil) {
-        //NSString *name = [defaults objectForKey:@"handle"];
-        //NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
-        //NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
-        //NSArray *orderedHandles = [me objectForKey:@"handle"];
-        [defaults setInteger:23 forKey:@"id"];
-
-//        for (int i = 0; i < orderedHandles.count; i++)
-//        {
-//            if ([[orderedHandles objectAtIndex:i] isEqual:name])
-//            {
-//                
-//                [defaults setInteger:[[[users objectAtIndex:i] valueForKey:@"id"] integerValue]  forKey:@"id"];
-//                [defaults synchronize];
-//                [battleStore populateBattles];
-//                [self.tableView reloadData];
-//                break;
-//            }
-//        }
-    }
-    [battleStore populateBattles];
-    [self.tableView reloadData];
-    theUsers = (NSArray *)users;
-}
-
-- (void)usersDidFinishPostingBattles:(NSMutableArray *)battles
-{
-    theBattles = (NSArray *)battles;
-    [self.tableView reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     //login verification
     BRLoginViewController *lvc = [[BRLoginViewController alloc] init];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"handle"] == nil) {
@@ -115,6 +72,15 @@
         });
     }
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self refreshData];
+    [self.tableView reloadData];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -132,13 +98,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (theBattles != nil)
-    {
         return theBattles.count;
-    }
     else
-    {
         return 0;
-    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,8 +114,6 @@
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    // placeholder configuration
     
     //Each cell is a battle with a user_id VS friend_id
     //numbers from id correlate to the cell in theUsers
@@ -206,12 +166,47 @@
     return 70;
 }
 
+#pragma mark - Battle Store Delegate Methods
+
+- (void) usersDidFinishPostingUsers:(NSMutableArray *)users
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"id"] == nil) {
+        //NSString *name = [defaults objectForKey:@"handle"];
+        NSArray *theUser = [NSArray arrayWithObjects: @"handle",nil];
+        //NSDictionary *me = [users dictionaryWithValuesForKeys:theUser];
+        //NSArray *orderedHandles = [me objectForKey:@"handle"];
+        [defaults setInteger:23 forKey:@"id"];
+        
+        //        for (int i = 0; i < orderedHandles.count; i++)
+        //        {
+        //            if ([[orderedHandles objectAtIndex:i] isEqual:name])
+        //            {
+        //
+        //                [defaults setInteger:[[[users objectAtIndex:i] valueForKey:@"id"] integerValue]  forKey:@"id"];
+        //                [defaults synchronize];
+        //                [battleStore populateBattles];
+        //                [self.tableView reloadData];
+        //                break;
+        //            }
+        //        }
+    }
+    [battleStore populateBattles];
+    [self.tableView reloadData];
+    theUsers = (NSArray *)users;
+}
+
+- (void)usersDidFinishPostingBattles:(NSMutableArray *)battles
+{
+    theBattles = (NSArray *)battles;
+    [self.tableView reloadData];
+}
+
+
 #pragma mark - Private Methods
+
 - (void)createBattle
 {
-    //create new battle item in mode
-//    ...
-    
     BRContactsViewController *contactsViewController =
                         [[BRContactsViewController alloc] init];
     
@@ -227,43 +222,11 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
+- (void)refreshData
+{
+    [battleStore populateUsers];
+    [self.tableView reloadData];
+}
+
+
 @end
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
