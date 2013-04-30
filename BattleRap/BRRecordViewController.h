@@ -15,7 +15,6 @@ AVAudioPlayerDelegate, UIAppearanceContainer>
 {
     AVAudioRecorder *recorder;
     AVAudioPlayer *player;
-    int timerCount;
 }
 
 
@@ -31,7 +30,7 @@ AVAudioPlayerDelegate, UIAppearanceContainer>
 - (IBAction)submitVerse:(id)sender;
 - (IBAction)retryVerse:(id)sender;
 
-- (void)recordPauseTapped;
+- (void)controlButtonTapped:(id)sender;
 - (void)stopRecording;
 - (void)playbackRecording;
 - (IBAction)convertAndSendTapped:(id)sender;
