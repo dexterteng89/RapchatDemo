@@ -20,7 +20,7 @@ AVAudioPlayerDelegate, UIAppearanceContainer>
 
 @property (nonatomic, strong) AVAudioPlayer *backgroundbeat;
 @property (nonatomic, copy) void (^dismissBlock) (void);
-@property (weak, nonatomic) IBOutlet UIToolbar *sendTool;
+@property (weak, nonatomic) IBOutlet UIToolbar *sendToolbar;
 
 @property (weak, nonatomic) UIButton *recordPauseButton;    
 @property (weak, nonatomic) IBOutlet UILabel *instructionsLabel;

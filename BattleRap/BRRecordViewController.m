@@ -18,10 +18,12 @@
 }
 @property (nonatomic) double recordDuration; 
 - (void)clearAndReset;
+- (void)hideToolbar;
+- (void)showToolbar;
 @end
 
 @implementation BRRecordViewController 
-@synthesize dismissBlock, timer, recordPauseButton, recordingComplete, sendTool, recordDuration;
+@synthesize dismissBlock, timer, recordPauseButton, recordingComplete, sendToolbar, recordDuration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +31,7 @@
     if (self) {
         self.navigationItem.title = @"New Verse";
         
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelBattle)];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelBattle:)];
         
         self.navigationItem.rightBarButtonItem = cancelButton;
     }
@@ -53,7 +55,9 @@
                 forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:recordPauseButton];
 
-    sendTool.hidden = YES;
+    // Have toolbar start offscreen
+    sendToolbar.hidden = YES;
+    [self hideToolbar];
     
     // Set the audio file
     NSArray *pathComponents = [NSArray arrayWithObjects:
@@ -103,43 +107,26 @@
 - (void)controlButtonTapped:(id)sender {
     NSLog(@"RecordPause tapped");
     
-    // Stop the audio player before recording
-    if (player.playing) {
-        [player stop];
-        [self.backgroundbeat stop];
-    }
+//    // Stop the audio player before recording
+//    if (player.playing) {
+//        [player stop];
+//        [self.backgroundbeat stop];
+//    }
     
     if (!recorder.recording && !recordingComplete) {
         // Start recording
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
-        
+        // Text fade kicks of countdown sequence 
         [self fadeText];
-        
     } else if (recordingComplete) {
-        
         [self playbackRecording];
-        
     } else {
         // cancel recording
-        
-        // get recording duration, needed to check if recording complete
-        recordDuration = recorder.currentTime;
-        NSLog(@"%f", recordDuration);
-        [recorder stop];
-        [recorder deleteRecording];
-        [self.backgroundbeat stop];
+        [self stopRecording];
     }
 }
 
 - (IBAction)submitVerse:(id)sender {
-}
-
-- (IBAction)retryVerse:(id)sender {
-    NSLog(@"retry attempted");
-    recordingComplete = NO;
-    [self.recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
-                            forState:UIControlStateNormal];
-    
 }
 
 - (IBAction)convertAndSendTapped:(id)sender
@@ -167,21 +154,12 @@
 }
 
 
-- (void)playBackgroundMusic:(NSString *)beatChoice
-{    
-    // Beat selection code goes here (will like occur in another view)
-//    
-//    [self.backgroundbeat play];
-}
-
 - (void)stopRecording {
-    NSLog(@"recording stopped");
-    
+    // Capture recording time before stop. Stop method resets to zero.
+    recordDuration = recorder.currentTime;
     [recorder stop];
+    [recorder deleteRecording];
     [self.backgroundbeat stop];
-    
-    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-    [audioSession setActive:NO error:nil];
 }
 
 - (void)playbackRecording {
@@ -194,14 +172,6 @@
     }
 }
 
-- (void)cancelBattle
-{
-    //code for setting battle object data to nil
-    
-    [self.presentingViewController dismissViewControllerAnimated:YES
-                                                      completion:dismissBlock];
-}
-
 - (void)clearAndReset
 {
     self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
@@ -210,9 +180,35 @@
                        forState:UIControlStateNormal];
     recordingComplete = NO;
     timerCount = 0;
-    recordDuration = 0;
+    recordDuration = 0; 
     self.backgroundbeat.currentTime = 0;
     NSLog(@"reset complete");
+}
+
+- (IBAction)retryVerse:(id)sender {
+    NSLog(@"retry attempted");
+    [self clearAndReset];
+    [self hideToolbar];
+}
+
+- (void)cancelBattle:(id)sender
+{
+    if (recorder.recording) {
+        [self stopRecording];
+    } else if (player.playing) {
+        [player stop];
+    }
+    
+    // TBD: code for setting battle object data to nil
+    [self.presentingViewController dismissViewControllerAnimated:YES
+                                                      completion:dismissBlock];
+}
+
+- (void)playBackgroundMusic:(NSString *)beatChoice
+{
+    // Beat selection code goes here (will like occur in another view)
+    //
+    //    [self.backgroundbeat play];
 }
 
 #pragma mark - Animation Methods
@@ -250,6 +246,34 @@
     fadeInAndOut.beginTime = 0.0;
     fadeInAndOut.fillMode = kCAFillModeBoth;
     [self.instructionsLabel.layer addAnimation:fadeInAndOut forKey:@"fadeInOut"];
+}
+
+- (void)hideToolbar
+{
+    [UIView animateWithDuration:0.2
+                     animations:^(void)
+     {
+         CGRect toolbarFrame = sendToolbar.frame;
+         toolbarFrame.origin.y += 44; // moves toolbar offscreen
+         sendToolbar.frame = toolbarFrame;
+     }
+                     completion:^(BOOL finished)
+     {
+         sendToolbar.hidden = YES;
+     }];
+}
+
+- (void)showToolbar
+{
+    [UIView animateWithDuration:0.2
+                     animations:^(void)
+     {
+         sendToolbar.hidden = NO;
+         CGRect toolbarFrame = sendToolbar.frame;
+         toolbarFrame.origin.y -= 44; // moves toolbar offscreen
+         sendToolbar.frame = toolbarFrame;
+     }
+                     completion:nil];
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
@@ -303,8 +327,10 @@
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder
                             successfully:(BOOL)flag
 {
+    // Check if complete recording was made. Duration goes to zero when
+    // recording complete
     if (recordDuration > 0) {
-        NSLog(@"record duration is: %f", recorder.currentTime);
+        NSLog(@"Recording duration: %f", recordDuration);
         [self clearAndReset];
     } else {
         [self.recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
@@ -313,7 +339,8 @@
         self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
         self.instructionsLabel.text = @"REVIEW YOUR VERSE";
         
-        sendTool.hidden = NO;
+//        sendToolbar.hidden = NO;
+        [self showToolbar];
         recordingComplete = YES;
     }
     
