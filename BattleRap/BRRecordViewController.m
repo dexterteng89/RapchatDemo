@@ -17,6 +17,7 @@
     int timerCount;
 }
 @property (nonatomic) double recordDuration; 
+- (void)clearAndReset;
 @end
 
 @implementation BRRecordViewController 
@@ -65,10 +66,10 @@
     // Setup audio session
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:NULL];
     
-    // Override speaker settings so plays through large speaker
-    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
-    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
-                             sizeof(audioRouteOverride),&audioRouteOverride);
+    // UNCOMMENT WHEN RUNNUNG ON PHONE - Overrides speaker settings so plays through speaker
+//    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+//    AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
+//                             sizeof(audioRouteOverride),&audioRouteOverride);
     
     // Setup Background Beat
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:
@@ -76,7 +77,6 @@
     
     self.backgroundbeat = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     self.backgroundbeat.volume = 1.0;
-    [self.backgroundbeat prepareToPlay];
     
     // Define the recorder setting
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
@@ -88,7 +88,6 @@
     // Initiate and prepare the recorder
     recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
     recorder.delegate = self;
-    recorder.meteringEnabled = YES;
     [recorder prepareToRecord];
     
 }
@@ -112,8 +111,7 @@
     
     if (!recorder.recording && !recordingComplete) {
         // Start recording
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setActive:YES error:nil];
+        [[AVAudioSession sharedInstance] setActive:YES error:nil];
         
         [self fadeText];
         
@@ -123,6 +121,8 @@
         
     } else {
         // cancel recording
+        
+        // get recording duration, needed to check if recording complete
         recordDuration = recorder.currentTime;
         NSLog(@"%f", recordDuration);
         [recorder stop];
@@ -202,6 +202,19 @@
                                                       completion:dismissBlock];
 }
 
+- (void)clearAndReset
+{
+    self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
+    self.instructionsLabel.text = @"RETRY YOUR VERSE";
+    [recordPauseButton setImage:[UIImage imageNamed:@"RecordButton.png"]
+                       forState:UIControlStateNormal];
+    recordingComplete = NO;
+    timerCount = 0;
+    recordDuration = 0;
+    self.backgroundbeat.currentTime = 0;
+    NSLog(@"reset complete");
+}
+
 #pragma mark - Animation Methods
 
 - (void)fadeText
@@ -274,6 +287,7 @@
     } else if (timerCount == 2) {
         self.instructionsLabel.text = @"1";
         [self fadeInOutText];
+        [self.backgroundbeat prepareToPlay];
     } else if (timerCount == 3) {
         [recorder recordForDuration:self.backgroundbeat.duration];
         [self.backgroundbeat play];
@@ -289,18 +303,19 @@
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder
                             successfully:(BOOL)flag
 {
-    if (recordDuration < self.backgroundbeat.duration) {
-        //reset recording
+    if (recordDuration > 0) {
+        NSLog(@"record duration is: %f", recorder.currentTime);
+        [self clearAndReset];
+    } else {
+        [self.recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
+                                forState:UIControlStateNormal];
+        
+        self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
+        self.instructionsLabel.text = @"REVIEW YOUR VERSE";
+        
+        sendTool.hidden = NO;
+        recordingComplete = YES;
     }
-    
-    [self.recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
-                            forState:UIControlStateNormal];
-    
-    self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
-    self.instructionsLabel.text = @"REVIEW YOUR VERSE";
-    
-    sendTool.hidden = NO;
-    recordingComplete = YES;
     
     [[AVAudioSession sharedInstance] setActive:NO error:nil];
 }
