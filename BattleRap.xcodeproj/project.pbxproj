@@ -50,6 +50,8 @@
 		1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */; };
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
+		69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0865F17332E36000D042D /* RecordViewPauseBtn.png */; };
+		69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */; };
 		69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E91639172399EF00A0F9BF /* LoginView.xib */; };
 		69E9163D17239C6500A0F9BF /* BRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9163C17239C6500A0F9BF /* BRLoginViewController.m */; };
 		69EB536817230856002E0127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB536717230856002E0127 /* UIKit.framework */; };
@@ -217,6 +219,8 @@
 		1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRRecordViewController.xib; sourceTree = "<group>"; };
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
+		69C0865F17332E36000D042D /* RecordViewPauseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordViewPauseBtn.png; sourceTree = "<group>"; };
+		69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordViewPauseBtn@2x.png"; sourceTree = "<group>"; };
 		69E91639172399EF00A0F9BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		69E9163B17239C6500A0F9BF /* BRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLoginViewController.h; sourceTree = "<group>"; };
 		69E9163C17239C6500A0F9BF /* BRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLoginViewController.m; sourceTree = "<group>"; };
@@ -321,6 +325,8 @@
 		6973A253172352540027C514 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				69C0865F17332E36000D042D /* RecordViewPauseBtn.png */,
+				69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */,
 				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
 				1DA4A9261724A06700580656 /* PauseButton.png */,
 				1DA4A9271724A06700580656 /* PauseButton@2x.png */,
@@ -643,6 +649,8 @@
 				1DA4A92B1724A06700580656 /* PauseButton@2x.png in Resources */,
 				1DA4A92C1724A06700580656 /* PlayButton.png in Resources */,
 				1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */,
+				69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */,
+				69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

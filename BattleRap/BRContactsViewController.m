@@ -148,8 +148,7 @@
     //DATA - set opponent propert of newly created battle object
     //set accessory to checkmark by listening for updates to model
     
-    if(self.checkedIndexPath)
-    {
+    if (self.checkedIndexPath) {
         UITableViewCell* uncheckCell = [tableView
                                         cellForRowAtIndexPath:self.checkedIndexPath];
         uncheckCell.accessoryType = UITableViewCellAccessoryNone;

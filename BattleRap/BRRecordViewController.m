@@ -162,10 +162,20 @@
 - (void)playbackRecording {
     NSLog(@"Play tapped");
     
-    if (!recorder.recording){
+    if (!player.playing) {
+        // Play the recording
+        [recordPauseButton setImage:[UIImage imageNamed:@"RecordViewPauseBtn.png"]
+                           forState:UIControlStateNormal];
+        
         player = [[AVAudioPlayer alloc] initWithContentsOfURL:recorder.url error:nil];
         [player setDelegate:self];
         [player play];
+    } else {
+        // Pause playback
+        [recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
+                           forState:UIControlStateNormal];
+        [player pause];
+        
     }
 }
 
