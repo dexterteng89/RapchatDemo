@@ -27,6 +27,7 @@ AVAudioPlayerDelegate, UIAppearanceContainer>
 
 @property (nonatomic) BOOL recordingComplete;
 @property (nonatomic, strong) NSTimer *timer;
+
 - (IBAction)submitVerse:(id)sender;
 - (IBAction)retryVerse:(id)sender;
 
