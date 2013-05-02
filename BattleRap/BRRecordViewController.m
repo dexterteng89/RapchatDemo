@@ -23,7 +23,8 @@
 @end
 
 @implementation BRRecordViewController 
-@synthesize dismissBlock, timer, recordPauseButton, recordingComplete, sendToolbar, recordDuration;
+@synthesize dismissBlock, timer, recordPauseButton,
+            recordingComplete, sendToolbar, recordDuration;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +32,10 @@
     if (self) {
         self.navigationItem.title = @"New Verse";
         
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelBattle:)];
-        
-        self.navigationItem.rightBarButtonItem = cancelButton;
+        self.navigationItem.rightBarButtonItem =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                         target:self
+                                                         action:@selector(cancelBattle:)];
     }
     return self;
 }
@@ -107,16 +109,11 @@
 - (void)controlButtonTapped:(id)sender {
     NSLog(@"RecordPause tapped");
     
-//    // Stop the audio player before recording
-//    if (player.playing) {
-//        [player stop];
-//        [self.backgroundbeat stop];
-//    }
-    
     if (!recorder.recording && !recordingComplete) {
         // Start recording
         [[AVAudioSession sharedInstance] setActive:YES error:nil];
-        // Text fade kicks of countdown sequence 
+        
+        // Text fade kicks of countdown sequence
         [self fadeText];
     } else if (recordingComplete) {
         [self playbackRecording];
@@ -235,8 +232,8 @@
     fadeInAndOut.duration = 1.0;
     fadeInAndOut.autoreverses = NO;
     fadeInAndOut.keyTimes = [NSArray arrayWithObjects:  [NSNumber numberWithFloat:0.0],
-                             [NSNumber numberWithFloat:0.2],
-                             [NSNumber numberWithFloat:0.8],
+                             [NSNumber numberWithFloat:0.15],
+                             [NSNumber numberWithFloat:0.85],
                              [NSNumber numberWithFloat:1.0], nil];
     
     fadeInAndOut.values = [NSArray arrayWithObjects:    [NSNumber numberWithFloat:0.0],

@@ -141,7 +141,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    BRRecordViewController *recordViewController = [[BRRecordViewController alloc] init];
+    if (recordViewController == nil) {
+         recordViewController = [[BRRecordViewController alloc] init];   
+    }
     
     //DATA - set opponent propert of newly created battle object
     //set accessory to checkmark by listening for updates to model
