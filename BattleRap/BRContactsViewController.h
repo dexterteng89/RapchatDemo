@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class BRRecordViewController;
+
 @interface BRContactsViewController : UITableViewController
 {
     NSArray *userHandles;
+    BRRecordViewController *recordViewController;
 }
 
 @property (nonatomic, strong) NSIndexPath *checkedIndexPath;
