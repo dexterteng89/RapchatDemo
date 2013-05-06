@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D563AEB173836AB00876C45 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1D563AEA173836AB00876C45 /* .gitignore */; };
 		1DA4A8BC1723F58900580656 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8A01723F4A500580656 /* libJSONKit.a */; };
 		1DA4A8BD1723F59400580656 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8AB1723F4AE00580656 /* libOAuth2Client.a */; };
 		1DA4A8BE1723F59B00580656 /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8B11723F4B900580656 /* libOHAttributedLabel.a */; };
@@ -171,6 +172,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D563AEA173836AB00876C45 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = BattleRap/.gitignore; sourceTree = "<group>"; };
 		1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBattleStoreDelegate.h; sourceTree = "<group>"; };
 		1DA4A8881723F48F00580656 /* SoundCloudAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudAPI.xcodeproj; path = CocoaSoundCloudAPI/SoundCloudAPI.xcodeproj; sourceTree = "<group>"; };
 		1DA4A8911723F49A00580656 /* SoundCloudUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudUI.xcodeproj; path = CocoaSoundCloudUI/SoundCloudUI.xcodeproj; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		6973A253172352540027C514 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1D563AEA173836AB00876C45 /* .gitignore */,
 				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
 				1DA4A9261724A06700580656 /* PauseButton.png */,
 				1DA4A9271724A06700580656 /* PauseButton@2x.png */,
@@ -639,6 +642,7 @@
 				1DA4A92B1724A06700580656 /* PauseButton@2x.png in Resources */,
 				1DA4A92C1724A06700580656 /* PlayButton.png in Resources */,
 				1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */,
+				1D563AEB173836AB00876C45 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
