@@ -51,6 +51,9 @@
 		1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */; };
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
+		693D6A501738388F00B6993B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 693D6A4F1738388F00B6993B /* .gitignore */; };
+		69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0865F17332E36000D042D /* RecordViewPauseBtn.png */; };
+		69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */; };
 		69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E91639172399EF00A0F9BF /* LoginView.xib */; };
 		69E9163D17239C6500A0F9BF /* BRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E9163C17239C6500A0F9BF /* BRLoginViewController.m */; };
 		69EB536817230856002E0127 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB536717230856002E0127 /* UIKit.framework */; };
@@ -68,6 +71,7 @@
 		69EB539E17231917002E0127 /* BRRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EB539D17231917002E0127 /* BRRecordViewController.m */; };
 		69EB53A117233FD3002E0127 /* BRBattleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EB53A017233FD3002E0127 /* BRBattleViewCell.m */; };
 		69EB53A3172343FF002E0127 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB53A2172343FF002E0127 /* AVFoundation.framework */; };
+		69F2241617307E5A0052418F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F2241517307E5A0052418F /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +222,9 @@
 		1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRRecordViewController.xib; sourceTree = "<group>"; };
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
+		693D6A4F1738388F00B6993B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		69C0865F17332E36000D042D /* RecordViewPauseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordViewPauseBtn.png; sourceTree = "<group>"; };
+		69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordViewPauseBtn@2x.png"; sourceTree = "<group>"; };
 		69E91639172399EF00A0F9BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
 		69E9163B17239C6500A0F9BF /* BRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRLoginViewController.h; sourceTree = "<group>"; };
 		69E9163C17239C6500A0F9BF /* BRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRLoginViewController.m; sourceTree = "<group>"; };
@@ -245,6 +252,7 @@
 		69EB539F17233FD3002E0127 /* BRBattleViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRBattleViewCell.h; sourceTree = "<group>"; };
 		69EB53A017233FD3002E0127 /* BRBattleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBattleViewCell.m; sourceTree = "<group>"; };
 		69EB53A2172343FF002E0127 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		69F2241517307E5A0052418F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F2241617307E5A0052418F /* AudioToolbox.framework in Frameworks */,
 				1DA4A8CC1723F5D100580656 /* Security.framework in Frameworks */,
 				1DA4A8CA1723F5CA00580656 /* QuartzCore.framework in Frameworks */,
 				1DA4A8C81723F5C300580656 /* CoreText.framework in Frameworks */,
@@ -320,7 +329,9 @@
 		6973A253172352540027C514 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1D563AEA173836AB00876C45 /* .gitignore */,
+				693D6A4F1738388F00B6993B /* .gitignore */,
+				69C0865F17332E36000D042D /* RecordViewPauseBtn.png */,
+				69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */,
 				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
 				1DA4A9261724A06700580656 /* PauseButton.png */,
 				1DA4A9271724A06700580656 /* PauseButton@2x.png */,
@@ -378,6 +389,7 @@
 		69EB536617230856002E0127 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69F2241517307E5A0052418F /* AudioToolbox.framework */,
 				1DA4A8CB1723F5D100580656 /* Security.framework */,
 				1DA4A8C91723F5CA00580656 /* QuartzCore.framework */,
 				1DA4A8C71723F5C300580656 /* CoreText.framework */,
@@ -642,7 +654,9 @@
 				1DA4A92B1724A06700580656 /* PauseButton@2x.png in Resources */,
 				1DA4A92C1724A06700580656 /* PlayButton.png in Resources */,
 				1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */,
-				1D563AEB173836AB00876C45 /* .gitignore in Resources */,
+				69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */,
+				69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */,
+				693D6A501738388F00B6993B /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
