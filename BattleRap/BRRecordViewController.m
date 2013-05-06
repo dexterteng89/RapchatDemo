@@ -186,6 +186,7 @@
     [recordPauseButton setImage:[UIImage imageNamed:@"RecordButton.png"]
                        forState:UIControlStateNormal];
     recordingComplete = NO;
+    timer = nil;
     timerCount = 0;
     recordDuration = 0; 
     self.backgroundbeat.currentTime = 0;
@@ -240,10 +241,9 @@
 {
     CAKeyframeAnimation *fadeInAndOut = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     fadeInAndOut.duration = 1.0;
-    fadeInAndOut.autoreverses = NO;
     fadeInAndOut.keyTimes = [NSArray arrayWithObjects:  [NSNumber numberWithFloat:0.0],
-                             [NSNumber numberWithFloat:0.15],
-                             [NSNumber numberWithFloat:0.85],
+                             [NSNumber numberWithFloat:0.17],
+                             [NSNumber numberWithFloat:0.83],
                              [NSNumber numberWithFloat:1.0], nil];
     
     fadeInAndOut.values = [NSArray arrayWithObjects:    [NSNumber numberWithFloat:0.0],
@@ -334,7 +334,7 @@
 - (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder
                             successfully:(BOOL)flag
 {
-    // Check if complete recording was made. Duration goes to zero when
+    // Check if complete recording was made. Duration will go to zero when
     // recording complete
     if (recordDuration > 0) {
         NSLog(@"Recording duration: %f", recordDuration);
