@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
-#import "SCUI.h"
 
 @interface BRRecordViewController()
 {
@@ -128,26 +127,7 @@
 
 - (IBAction)convertAndSendTapped:(id)sender
 {
-    NSURL *trackURL = recorder.url;
-    
-    SCShareViewController *shareViewController;
-    SCSharingViewControllerCompletionHandler handler;
-    
-    handler = ^(NSDictionary *trackInfo, NSError *error) {
-        if (SC_CANCELED(error)) {
-            NSLog(@"Canceled!");
-        } else if (error) {
-            NSLog(@"Error: %@", [error localizedDescription]);
-        } else {
-            NSLog(@"Uploaded track: %@", trackInfo);
-        }
-    };
-    shareViewController = [SCShareViewController
-                           shareViewControllerWithFileURL:trackURL
-                           completionHandler:handler];
-    [shareViewController setTitle:@"RAP BATTLE"];
-    [shareViewController setPrivate:YES];
-    [self presentModalViewController:shareViewController animated:YES];
+    //Connect with API and POST requests
 }
 
 
