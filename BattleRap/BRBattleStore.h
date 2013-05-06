@@ -30,6 +30,7 @@
 - (void)createBattleWith:(NSString *)friendName;
 
 //Implement Later
+
 //- (void)addBattleWith:(NSString *)friendName;
 //- (void)updateBattleWith:(NSInteger)battleID andWith:(BRVerse *)verse;
 

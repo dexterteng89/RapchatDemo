@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D563AEB173836AB00876C45 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1D563AEA173836AB00876C45 /* .gitignore */; };
 		1DA4A8BC1723F58900580656 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8A01723F4A500580656 /* libJSONKit.a */; };
 		1DA4A8BD1723F59400580656 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8AB1723F4AE00580656 /* libOAuth2Client.a */; };
 		1DA4A8C31723F5AC00580656 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8C11723F5AB00580656 /* AddressBook.framework */; };
@@ -116,6 +117,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D563AEA173836AB00876C45 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = BattleRap/.gitignore; sourceTree = "<group>"; };
 		1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBattleStoreDelegate.h; sourceTree = "<group>"; };
 		1DA4A89A1723F4A400580656 /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
 		1DA4A8A31723F4AE00580656 /* OAuth2Client.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2Client.xcodeproj; path = OAuth2Client/OAuth2Client.xcodeproj; sourceTree = "<group>"; };

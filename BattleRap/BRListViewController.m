@@ -54,7 +54,6 @@
     battleStore.delegate = self;
     [self refreshData];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
