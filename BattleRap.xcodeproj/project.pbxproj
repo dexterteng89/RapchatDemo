@@ -50,6 +50,7 @@
 		1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */; };
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
+		693D6A501738388F00B6993B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 693D6A4F1738388F00B6993B /* .gitignore */; };
 		69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0865F17332E36000D042D /* RecordViewPauseBtn.png */; };
 		69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */; };
 		69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E91639172399EF00A0F9BF /* LoginView.xib */; };
@@ -219,6 +220,7 @@
 		1DE4B23D1723AFFD00154B90 /* BRRecordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BRRecordViewController.xib; sourceTree = "<group>"; };
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
+		693D6A4F1738388F00B6993B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		69C0865F17332E36000D042D /* RecordViewPauseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordViewPauseBtn.png; sourceTree = "<group>"; };
 		69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordViewPauseBtn@2x.png"; sourceTree = "<group>"; };
 		69E91639172399EF00A0F9BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 		6973A253172352540027C514 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				693D6A4F1738388F00B6993B /* .gitignore */,
 				69C0865F17332E36000D042D /* RecordViewPauseBtn.png */,
 				69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */,
 				1DA4A9131724957B00580656 /* UIToolbarBG.png */,
@@ -651,6 +654,7 @@
 				1DA4A92D1724A06700580656 /* PlayButton@2x.png in Resources */,
 				69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */,
 				69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */,
+				693D6A501738388F00B6993B /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
