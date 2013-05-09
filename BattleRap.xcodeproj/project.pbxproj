@@ -47,6 +47,7 @@
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
 		693D6A501738388F00B6993B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 693D6A4F1738388F00B6993B /* .gitignore */; };
+		69AF9839173C0E4F009A1E38 /* BRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF9838173C0E4F009A1E38 /* BRUser.m */; };
 		69B08A3117396FF10056987F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B08A3017396FF10056987F /* SystemConfiguration.framework */; };
 		69B08A3317396FFC0056987F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B08A3217396FFC0056987F /* MobileCoreServices.framework */; };
 		69B08A36173970740056987F /* BRHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B08A35173970740056987F /* BRHTTPClient.m */; };
@@ -161,6 +162,8 @@
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
 		693D6A4F1738388F00B6993B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		69AF9837173C0E4F009A1E38 /* BRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRUser.h; sourceTree = "<group>"; };
+		69AF9838173C0E4F009A1E38 /* BRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRUser.m; sourceTree = "<group>"; };
 		69B08A3017396FF10056987F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		69B08A3217396FFC0056987F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		69B08A34173970740056987F /* BRHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRHTTPClient.h; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				1DE4B23A1723AFF200154B90 /* BRBattleStore.h */,
 				1DE4B23B1723AFF200154B90 /* BRBattleStore.m */,
 				1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */,
+				69AF9837173C0E4F009A1E38 /* BRUser.h */,
+				69AF9838173C0E4F009A1E38 /* BRUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				69E9163D17239C6500A0F9BF /* BRLoginViewController.m in Sources */,
 				1DE4B23C1723AFF200154B90 /* BRBattleStore.m in Sources */,
 				69B08A36173970740056987F /* BRHTTPClient.m in Sources */,
+				69AF9839173C0E4F009A1E38 /* BRUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

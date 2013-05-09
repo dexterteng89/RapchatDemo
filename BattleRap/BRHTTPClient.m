@@ -62,13 +62,14 @@ static NSString * const kBRHTTPClientBaseURLString = @"http://rapchat-staging.he
     // [self clearAuthorizationHeader]
 }
 
-// Passive, token-based sign-in for reopening app
-- (void)signInWithAuthToken:(NSString *)token
-                    success:(BRHTTPClientSuccess)success
-                    failure:(BRHTTPClientFailure)failure
+- (void)signUpWithHandle:(NSString *)handle
+                   email:(NSString *)email
+                password:(NSString *)password
+                 success:(BRHTTPClientSuccess)success
+                 failure:(BRHTTPClientFailure)failure
 {
-    // Basically the same content at sign-in with auth_token for params instead of
-    // handle and password
+    // Same code as above but with added "email" param and
+    // different path for post  i.e "/users"
 }
 
 
