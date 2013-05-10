@@ -13,6 +13,9 @@
 #define USER_ID_KEY @"username"
 #define PASSWORD_KEY @"password"
 #define AUTH_TOKEN_KEY @"auth_token"
+#define EMAIL_KEY @"email"
+
+// Global instance of current user (pseudo-singleton)
 
 @interface BRUser ()
 
@@ -21,40 +24,77 @@
 
 @end
 
+
 @implementation BRUser
+@synthesize userID, password, authToken, email;
+
+#pragma mark - Singleton methods
+
++ (BRUser *)currentUser
+{
+    static BRUser *currentUser = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        currentUser = [[self alloc] init];
+    });
+    return currentUser;
+}
+
+- (id)init
+{
+    if (self = [super init]) {
+        userID = [self userID];
+        password = [self password];
+        authToken = [self authToken];
+        email = [self email];
+    }
+    return self;
+}
+
 
 #pragma mark - Custom getters
 
 - (NSString *)userID
 {
+    return [self secureValueForKey:USER_ID_KEY];
 }
 
 - (NSString *)password
 {
-    
+    return [self secureValueForKey:PASSWORD_KEY];
 }
 
 - (NSString *)authToken
 {
-    
+    return [self secureValueForKey:AUTH_TOKEN_KEY];
+}
+
+- (NSString *)email
+{
+    return [self secureValueForKey:EMAIL_KEY];
 }
 
 #pragma mark - Custom setters
 
-- (void)setUserID:(NSString *)userID
+- (void)setUserID:(NSString *)handle
 {
-    [self setSecureValue:userID forKey:USER_ID_KEY];
+    [self setSecureValue:handle forKey:USER_ID_KEY];
 }
 
-- (void)setPassword:(NSString *)password
+- (void)setPassword:(NSString *)pass
 {
-    [self setSecureValue:password forKey:PASSWORD_KEY];
+    [self setSecureValue:pass forKey:PASSWORD_KEY];
 }
 
-- (void)setAuthToken:(NSString *)authToken
+- (void)setAuthToken:(NSString *)token
 {
-    [self setSecureValue:authToken forKey:AUTH_TOKEN_KEY];
+    [self setSecureValue:token forKey:AUTH_TOKEN_KEY];
     // TODO: code for authToken changed, allows auto-login
+}
+
+- (void)setEmail:(NSString *)mail
+{
+    [self setSecureValue:mail forKey:EMAIL_KEY];
 }
 
 #pragma mark - SSKeychain universal getter/setter
@@ -71,6 +111,10 @@
 - (NSString *)secureValueForKey:(NSString *)key
 {
     return [SSKeychain passwordForService:SERVICE_NAME account:key];
+}
+
+- (void)clearSavedCredentials {
+    [self setAuthToken:nil];
 }
 
 @end

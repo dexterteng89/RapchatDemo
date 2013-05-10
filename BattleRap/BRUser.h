@@ -15,4 +15,8 @@
 @property (nonatomic, strong) NSString *password;
 @property (nonatomic, strong) NSString *authToken;
 
++ (BRUser *)currentUser;
+
+- (void)clearSavedCredentials;
+
 @end

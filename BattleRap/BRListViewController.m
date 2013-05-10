@@ -11,6 +11,7 @@
 #import "BRBattleViewController.h"
 #import "BRLoginViewController.h"
 #import "BRBattleStore.h"
+#import "BRUser.h"
 
 @interface BRListViewController ()
 {
@@ -59,18 +60,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
     //login verification
-    BRLoginViewController *lvc = [[BRLoginViewController alloc] init];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"handle"] == nil) {
-        
-        double delayInSeconds = 0.1;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            [self setModalPresentationStyle:UIModalPresentationFormSheet];
-            [self presentViewController:lvc animated:NO completion:nil];
-        });
-    }
+    [self checkForUser];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -220,6 +212,23 @@
     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
 
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)checkForUser
+{
+    if (![[BRUser currentUser] authToken]) {
+        
+        BRLoginViewController *loginViewController = [[BRLoginViewController alloc] init];
+        
+        [self setModalPresentationStyle:UIModalPresentationFormSheet];
+        [self presentViewController:loginViewController animated:NO completion:nil];
+        
+//        double delayInSeconds = 0.1;
+//        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//
+//        });
+    }
 }
 
 - (void)refreshData
