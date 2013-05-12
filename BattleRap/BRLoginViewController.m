@@ -123,8 +123,9 @@
     
     [[BRHTTPClient sharedClient] signInWithHandle:usernameField.text password:passwordField.text success:^(AFJSONRequestOperation *operation, id responseObject) {
         //TODO: dismiss HUD on success
-        
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"[LVC] sign in successful");
+
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {
         NSString *message = [[operation responseJSON] objectForKey:@"error_description"];
         

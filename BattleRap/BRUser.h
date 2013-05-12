@@ -17,6 +17,10 @@
 
 + (BRUser *)currentUser;
 
-- (void)clearSavedCredentials;
+- (void)updateCurrentUserWith:(NSString *)handle
+                        email:(NSString *)mail
+                     password:(NSString *)pass
+                    authToken:(NSString *)token;
+- (void)clearUserCredentials;
 
 @end

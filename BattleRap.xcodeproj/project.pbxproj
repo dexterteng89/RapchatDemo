@@ -285,6 +285,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		69AF984A173D9522009A1E38 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				69EB537617230856002E0127 /* BRAppDelegate.h */,
+				69EB537717230856002E0127 /* BRAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
 		69B08A2D17396C6A0056987F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,8 +351,7 @@
 				69EB538D172309AB002E0127 /* Models */,
 				69EB538C17230998002E0127 /* Controllers */,
 				69EB538B17230992002E0127 /* Views */,
-				69EB537617230856002E0127 /* BRAppDelegate.h */,
-				69EB537717230856002E0127 /* BRAppDelegate.m */,
+				69AF984A173D9522009A1E38 /* App Delegate */,
 				6973A253172352540027C514 /* Resources */,
 				69EB536E17230856002E0127 /* Supporting Files */,
 			);

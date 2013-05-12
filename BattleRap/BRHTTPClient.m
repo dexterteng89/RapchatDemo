@@ -8,8 +8,10 @@
 
 #import "BRHTTPClient.h"
 #import "AFJSONRequestOperation.h"
+#import "BRUser.h"
 
 static NSString * const kBRHTTPClientBaseURLString = @"http://rapchat-staging.herokuapp.com/";
+static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-test.herokuapp.com/";
 
 @implementation BRHTTPClient
 
@@ -21,7 +23,7 @@ static NSString * const kBRHTTPClientBaseURLString = @"http://rapchat-staging.he
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [[BRHTTPClient alloc] initWithBaseURL:
-                        [NSURL URLWithString:kBRHTTPClientBaseURLString]];
+                        [NSURL URLWithString:kBRHTTPClientTestBaseURLString]];
     });
     return _sharedClient;
 }
@@ -50,9 +52,44 @@ static NSString * const kBRHTTPClientBaseURLString = @"http://rapchat-staging.he
                  success:(BRHTTPClientSuccess)success
                  failure:(BRHTTPClientFailure)failure
 {
-    // Set params dictionary
+    NSLog(@"sign in called");
     
-    // Set authorization header
+    NSDictionary *params = @{@"user": @{
+                                         @"username" : handle,
+                                         @"password" : password}
+                             };
+    
+    
+    [self postPath:@"users/sign_in"
+        parameters:params
+           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               
+               NSString *authToken = [[responseObject objectForKey:@"data"] objectForKey:@"auth_token"];
+               
+               NSLog(@"JSON: %@", responseObject);
+               NSLog(@"Pulled Auth token: %@", authToken);
+               NSLog(@"Saved Auth token: %@", [[BRUser currentUser] authToken]);
+               
+               [[BRUser currentUser] updateCurrentUserWith:handle
+                                                     email:nil
+                                                  password:password
+                                                 authToken:authToken];
+               
+               NSLog(@"sign in successful");
+                              
+               NSLog(@"Username: %@", [[BRUser currentUser] userID]);
+
+               
+               success((AFJSONRequestOperation *)operation, responseObject);
+               
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"sign in failed");
+        NSLog(@"%@", [error localizedDescription]);
+
+        if (operation.response.statusCode == 500) 
+            NSLog(@"reponse code: 500");
+
+    }];
     
     // Setup POST request with postPath:
         // in request's success block: instantiate current user, set auth_token,
@@ -68,8 +105,53 @@ static NSString * const kBRHTTPClientBaseURLString = @"http://rapchat-staging.he
                  success:(BRHTTPClientSuccess)success
                  failure:(BRHTTPClientFailure)failure
 {
-    // Same code as above but with added "email" param and
-    // different path for post  i.e "/users"
+    NSLog(@"sign up called");
+    
+    NSDictionary *params = @{@"handle" : handle,
+                           @"password" : password,
+                              @"email" : email};
+    
+    [self postPath:@"users/sign_in"
+        parameters:params
+           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+               
+               NSString *authToken = [responseObject objectForKey:@"auth_token"];
+               
+               NSLog(@"%@", authToken);
+               
+               [[BRUser currentUser] updateCurrentUserWith:handle
+                                                     email:nil
+                                                  password:password
+                                                 authToken:authToken];
+               
+               NSLog(@"sign up successful");
+               
+               success((AFJSONRequestOperation *)operation, responseObject);
+               
+           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+               NSLog(@"sign up failed");
+           }];
+}
+
+- (void)signOutWithSuccess:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure
+{
+    NSDictionary *params = @{@"auth_token": [[BRUser currentUser] authToken]};
+    
+    [self deletePath:@"users/sign_out" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSLog(@"Signout JSON:%@", responseObject);
+        
+        [[BRUser currentUser] updateCurrentUserWith:nil
+                                              email:nil
+                                           password:nil
+                                          authToken:nil];
+        success((AFJSONRequestOperation *)operation, responseObject);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Log out failed. Error: %@", [error localizedDescription]);
+        failure((AFJSONRequestOperation *)operation, (NSError *)error);
+    }];
+    
 }
 
 

@@ -20,5 +20,6 @@ typedef void (^BRHTTPClientFailure)(AFJSONRequestOperation *operation, NSError *
 
 - (void)signInWithHandle:(NSString *)handle password:(NSString *)password success:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
 - (void)signUpWithHandle:(NSString *)handle email:(NSString *)email password:(NSString *)password success:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
+- (void)signOutWithSuccess:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
 
 @end

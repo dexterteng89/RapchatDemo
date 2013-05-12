@@ -97,6 +97,17 @@
     [self setSecureValue:mail forKey:EMAIL_KEY];
 }
 
+- (void)updateCurrentUserWith:(NSString *)handle
+                        email:(NSString *)mail
+                     password:(NSString *)pass
+                    authToken:(NSString *)token
+{
+    [self setUserID:handle];
+    [self setEmail:mail];
+    [self setPassword:pass];
+    [self setAuthToken:token];
+}
+
 #pragma mark - SSKeychain universal getter/setter
 
 - (void)setSecureValue:(NSString *)value forKey:(NSString *)key
@@ -105,6 +116,7 @@
         [SSKeychain setPassword:value forService:SERVICE_NAME account:key];
     } else {
         [SSKeychain deletePasswordForService:SERVICE_NAME account:key];
+        NSLog(@"credential deleted: %@", key);
     }
 }
 
@@ -113,8 +125,5 @@
     return [SSKeychain passwordForService:SERVICE_NAME account:key];
 }
 
-- (void)clearSavedCredentials {
-    [self setAuthToken:nil];
-}
 
 @end

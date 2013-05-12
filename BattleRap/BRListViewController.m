@@ -12,6 +12,7 @@
 #import "BRLoginViewController.h"
 #import "BRBattleStore.h"
 #import "BRUser.h"
+#import "BRHTTPClient.h"
 
 @interface BRListViewController ()
 {
@@ -35,7 +36,10 @@
         
         UIBarButtonItem *createButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createBattle)];
         
+        UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log out" style:UIBarButtonItemStyleBordered target:self action:@selector(logout:)];
+        
         self.navigationItem.rightBarButtonItem = createButton;
+        self.navigationItem.leftBarButtonItem = logoutButton;
     }
     return self;
 }
@@ -235,6 +239,17 @@
 {
     [battleStore populateUsers];
     [self.tableView reloadData];
+}
+
+- (void)logout:(id)sender
+{
+    [[BRHTTPClient sharedClient] signOutWithSuccess:^(AFJSONRequestOperation *operation, id responseObject) {
+        NSLog(@"Signout successful");
+        
+        [self checkForUser];
+    } failure:^(AFJSONRequestOperation *operation, NSError *error) {
+        NSLog(@"Signout failed");
+    }];
 }
 
 
