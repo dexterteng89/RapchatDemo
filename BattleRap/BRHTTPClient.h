@@ -16,10 +16,13 @@ typedef void (^BRHTTPClientFailure)(AFJSONRequestOperation *operation, NSError *
 
 + (BRHTTPClient *)sharedClient;
 
-#pragma mark - USER METHODS
+//USER METHODS
 
 - (void)signInWithHandle:(NSString *)handle password:(NSString *)password success:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
 - (void)signUpWithHandle:(NSString *)handle email:(NSString *)email password:(NSString *)password success:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
 - (void)signOutWithSuccess:(BRHTTPClientSuccess)success failure:(BRHTTPClientFailure)failure;
+
+//SESSION
+- (void)clearCookies;
 
 @end

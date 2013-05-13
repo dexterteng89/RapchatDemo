@@ -9,6 +9,7 @@
 #import "BRLoginViewController.h"
 #import "BRBattleStore.h"
 #import "BRHTTPClient.h"
+#import "MBProgressHUD.h"
 
 #define kOFFSET_FOR_KEYBOARD 105.0
 

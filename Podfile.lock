@@ -1,13 +1,16 @@
 PODS:
   - AFNetworking (1.2.1)
+  - MBProgressHUD (0.6)
   - SSKeychain (1.0.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 1.2)
+  - MBProgressHUD (~> 0.6)
   - SSKeychain
 
 SPEC CHECKSUMS:
   AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
+  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
   SSKeychain: 0e7add9e329975653cb66c9d527493a5539755f6
 
 COCOAPODS: 0.19.1

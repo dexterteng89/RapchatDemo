@@ -97,7 +97,7 @@
     [self setSecureValue:mail forKey:EMAIL_KEY];
 }
 
-- (void)updateCurrentUserWith:(NSString *)handle
+- (void)updateCurrentUserWithHandle:(NSString *)handle
                         email:(NSString *)mail
                      password:(NSString *)pass
                     authToken:(NSString *)token
@@ -106,6 +106,11 @@
     [self setEmail:mail];
     [self setPassword:pass];
     [self setAuthToken:token];
+}
+
+- (void)clearUserCredentials
+{
+    [self updateCurrentUserWithHandle:nil email:nil password:nil authToken:nil];
 }
 
 #pragma mark - SSKeychain universal getter/setter

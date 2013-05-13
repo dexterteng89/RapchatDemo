@@ -17,7 +17,7 @@
 
 + (BRUser *)currentUser;
 
-- (void)updateCurrentUserWith:(NSString *)handle
+- (void)updateCurrentUserWithHandle:(NSString *)handle
                         email:(NSString *)mail
                      password:(NSString *)pass
                     authToken:(NSString *)token;

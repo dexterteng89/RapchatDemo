@@ -45,15 +45,13 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
     return self;
 }
 
-#pragma mark - User Login
+#pragma mark - User Methods
 
 - (void)signInWithHandle:(NSString *)handle
                 password:(NSString *)password
                  success:(BRHTTPClientSuccess)success
                  failure:(BRHTTPClientFailure)failure
 {
-    NSLog(@"sign in called");
-    
     NSDictionary *params = @{@"user": @{
                                          @"username" : handle,
                                          @"password" : password}
@@ -65,20 +63,16 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                
                NSString *authToken = [[responseObject objectForKey:@"data"] objectForKey:@"auth_token"];
-               
-               NSLog(@"JSON: %@", responseObject);
+
                NSLog(@"Pulled Auth token: %@", authToken);
-               NSLog(@"Saved Auth token: %@", [[BRUser currentUser] authToken]);
                
-               [[BRUser currentUser] updateCurrentUserWith:handle
+               [[BRUser currentUser] updateCurrentUserWithHandle:handle
                                                      email:nil
                                                   password:password
                                                  authToken:authToken];
                
                NSLog(@"sign in successful");
-                              
                NSLog(@"Username: %@", [[BRUser currentUser] userID]);
-
                
                success((AFJSONRequestOperation *)operation, responseObject);
                
@@ -91,12 +85,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
 
     }];
     
-    // Setup POST request with postPath:
-        // in request's success block: instantiate current user, set auth_token,
-        // call method's success block
-        // in failure block, call method's failure block
     
-    // [self clearAuthorizationHeader]
 }
 
 - (void)signUpWithHandle:(NSString *)handle
@@ -119,7 +108,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
                
                NSLog(@"%@", authToken);
                
-               [[BRUser currentUser] updateCurrentUserWith:handle
+               [[BRUser currentUser] updateCurrentUserWithHandle:handle
                                                      email:nil
                                                   password:password
                                                  authToken:authToken];
@@ -141,10 +130,12 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
         
         NSLog(@"Signout JSON:%@", responseObject);
         
-        [[BRUser currentUser] updateCurrentUserWith:nil
+        [[BRUser currentUser] updateCurrentUserWithHandle:nil
                                               email:nil
                                            password:nil
                                           authToken:nil];
+        [self clearCookies];
+        
         success((AFJSONRequestOperation *)operation, responseObject);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -152,6 +143,16 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
         failure((AFJSONRequestOperation *)operation, (NSError *)error);
     }];
     
+}
+
+#pragma mark - SESSION
+
+- (void)clearCookies
+{
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:kBRHTTPClientTestBaseURLString]];
+    for (NSHTTPCookie *cookie in cookies) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
 }
 
 
