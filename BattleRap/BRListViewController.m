@@ -13,6 +13,7 @@
 #import "BRBattleStore.h"
 #import "BRUser.h"
 #import "BRHTTPClient.h"
+#import "SVProgressHUD.h"
 
 @interface BRListViewController ()
 {
@@ -237,8 +238,11 @@
 
 - (void)logout:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"  LOGGING OUT  "];
+    
     [[BRHTTPClient sharedClient] signOutWithSuccess:^(AFJSONRequestOperation *operation, id responseObject) {
         NSLog(@"Signout successful");
+        [SVProgressHUD dismiss];
         
         [self checkForUser];
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {

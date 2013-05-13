@@ -8,6 +8,7 @@
 
 #import "BRAppDelegate.h"
 #import "BRListViewController.h"
+#import "SVProgressHUD.h"
 
 @implementation BRAppDelegate
 
@@ -88,8 +89,12 @@
 	[barButton setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, -1.0f) forBarMetrics:UIBarMetricsDefault];
 	[barButton setBackButtonBackgroundImage:[[UIImage imageNamed:@"ModalNavRectBtn-L4-T0-normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
-    
-    
+    // SVProgressHUD
+    SVProgressHUD *progressHUD = [SVProgressHUD appearance];
+    [progressHUD setHudBackgroundColor:[UIColor blackColor]];
+    [progressHUD setHudForegroundColor:[UIColor whiteColor]];
+    [progressHUD setHudFont:[UIFont fontWithName:@"Avenir-Heavy" size:16]];
+
 }
 
 @end

@@ -9,13 +9,16 @@
 #import "BRLoginViewController.h"
 #import "BRBattleStore.h"
 #import "BRHTTPClient.h"
-#import "MBProgressHUD.h"
+#import "SVProgressHUD.h"
 
+// Offset for sliding view up when keyboard appears
 #define kOFFSET_FOR_KEYBOARD 105.0
 
 @interface BRLoginViewController ()
 {
     NSArray *userArray;
+//    MBProgressHUD *hud;
+    
     BOOL _loginAttemped;
     BOOL _signUpMode;
 }
@@ -119,13 +122,13 @@
 - (void)signIn
 {
     NSLog(@"SignIn called");
-    
-    // TODO: progress HUD
+
+    [SVProgressHUD showWithStatus:@"  LOGGING IN  "];
     
     [[BRHTTPClient sharedClient] signInWithHandle:usernameField.text password:passwordField.text success:^(AFJSONRequestOperation *operation, id responseObject) {
         //TODO: dismiss HUD on success
         NSLog(@"[LVC] sign in successful");
-
+        [SVProgressHUD dismiss];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {
         NSString *message = [[operation responseJSON] objectForKey:@"error_description"];
@@ -162,6 +165,8 @@
 
 - (void)toggleEmailFieldHidden
 {
+    float kOFFSET_FOR_TEXTFIELDS = 73.0;
+    
     if (_signUpMode) {
         // hide email field and slide password field up
         
@@ -170,11 +175,11 @@
             emailLabel.alpha = 0;
             
             CGRect passFieldFrame = passwordField.frame;
-            passFieldFrame.origin.y -= 76.0;
+            passFieldFrame.origin.y -= kOFFSET_FOR_TEXTFIELDS;
             passwordField.frame = passFieldFrame;
             
             CGRect passLabelFrame = passwordLabel.frame;
-            passLabelFrame.origin.y -= 76.0;
+            passLabelFrame.origin.y -= kOFFSET_FOR_TEXTFIELDS;
             passwordLabel.frame = passLabelFrame;
             
         } completion:nil];
@@ -183,11 +188,11 @@
         // show email field and move password field down
         [UIView animateWithDuration:0.25f animations:^{
             CGRect passFieldFrame = passwordField.frame;
-            passFieldFrame.origin.y += 76.0;
+            passFieldFrame.origin.y += kOFFSET_FOR_TEXTFIELDS;
             passwordField.frame = passFieldFrame;
             
             CGRect passLabelFrame = passwordLabel.frame;
-            passLabelFrame.origin.y += 76.0;
+            passLabelFrame.origin.y += kOFFSET_FOR_TEXTFIELDS;
             passwordLabel.frame = passLabelFrame;
             
         } completion:^(BOOL finished) {
@@ -199,32 +204,6 @@
         [UIView commitAnimations];
         
     }
-}
-
-- (void)postUserInformation
-{
-    NSString *userHandle = [[NSUserDefaults standardUserDefaults] objectForKey:@"handle"];
-    
-    NSDictionary *postDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:userHandle, @"handle", nil];
-    
-    NSError *error;
-    
-    NSData *file1Data = [NSJSONSerialization dataWithJSONObject:postDictionary options:0 error:&error];
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rapchat-staging.herokuapp.com/users"]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:[NSString stringWithFormat:@"%d", [file1Data length]] forHTTPHeaderField:@"Content-Length"];
-    [request setHTTPBody: file1Data];
-    
-    [NSURLConnection connectionWithRequest:request delegate:self];
-    BRBattleStore *battleStore = [BRBattleStore sharedStore];
-    [battleStore populateUsers];
-
 }
 
 #pragma mark - UITextViewDelegate methods
