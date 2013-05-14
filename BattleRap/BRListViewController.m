@@ -246,7 +246,12 @@
         
         [self checkForUser];
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {
-        NSLog(@"Signout failed");
+        NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:0
+                                                               error:nil];
+        NSString *errorMessage = [json objectForKey:@"error"];
+        [SVProgressHUD showErrorWithStatus:errorMessage];
     }];
 }
 

@@ -55,7 +55,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
     NSDictionary *params = @{@"user": @{
                                          @"username" : handle,
                                          @"password" : password}
-                             };
+                            };
     
     
     [self postPath:@"users/sign_in"
@@ -79,10 +79,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"sign in failed");
         NSLog(@"%@", [error localizedDescription]);
-
-        if (operation.response.statusCode == 500) 
-            NSLog(@"reponse code: 500");
-
+        failure((AFJSONRequestOperation *)operation, (NSError *)error);
     }];
     
     
@@ -96,11 +93,14 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
 {
     NSLog(@"sign up called");
     
-    NSDictionary *params = @{@"handle" : handle,
-                           @"password" : password,
-                              @"email" : email};
+    NSDictionary *params = @{@"user": @{
+                                     @"username" : handle,
+                                     @"email"    : email,
+                                     @"password" : password,
+                                     @"password_confirmation" : password}
+                             };
     
-    [self postPath:@"users/sign_in"
+    [self postPath:@"users/"
         parameters:params
            success:^(AFHTTPRequestOperation *operation, id responseObject) {
                
@@ -109,7 +109,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
                NSLog(@"%@", authToken);
                
                [[BRUser currentUser] updateCurrentUserWithHandle:handle
-                                                     email:nil
+                                                     email:email
                                                   password:password
                                                  authToken:authToken];
                
@@ -119,6 +119,7 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
                
            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                NSLog(@"sign up failed");
+               failure((AFJSONRequestOperation *)operation, (NSError *)error);
            }];
 }
 
@@ -126,14 +127,16 @@ static NSString * const kBRHTTPClientTestBaseURLString = @"http://ptm-upload-tes
 {
     NSDictionary *params = @{@"auth_token": [[BRUser currentUser] authToken]};
     
+    NSLog(@"Signout token: %@", [[BRUser currentUser] authToken]);
+        
     [self deletePath:@"users/sign_out" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"Signout JSON:%@", responseObject);
         
         [[BRUser currentUser] updateCurrentUserWithHandle:nil
-                                              email:nil
-                                           password:nil
-                                          authToken:nil];
+                                                    email:nil
+                                                 password:nil
+                                                authToken:nil];
         [self clearCookies];
         
         success((AFJSONRequestOperation *)operation, responseObject);

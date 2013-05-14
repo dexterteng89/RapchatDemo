@@ -94,28 +94,34 @@
 {
     NSLog(@"SignUp called");
     
-    // TODO: progress HUD
+    [SVProgressHUD showWithStatus:@"  SIGNING UP  "];
     
     [[BRHTTPClient sharedClient] signUpWithHandle:usernameField.text
       email:emailField.text
       password:passwordField.text
       success:^(AFJSONRequestOperation *operation, id responseObject) {
-        //TODO: dismiss HUD on success
-                                              
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"[LVC] Sign Up successful");
+        [SVProgressHUD dismiss];
+
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {
-        
-        //TODO: update HUD to show failure
-        
-        NSString *message = [[operation responseJSON] objectForKey:@"error_description"];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];        
+        if (operation.response.statusCode == 500) {
+            [SVProgressHUD showErrorWithStatus:@"Something went wrong!"];
+        } else {
+            NSLog(@"Sign up: shit done failed");
+            
+            NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                 options:0
+                                                                   error:nil];
+            
+            NSLog(@"failure JSON: %@", json);
+            NSString *errorMessage = [[[json objectForKey:@"info"] objectForKey:@"email"] lastObject];
+            NSLog(@"errorMessage: %@", errorMessage);
+            
+            [SVProgressHUD showErrorWithStatus:errorMessage];
+        }
     }];
 }
 
@@ -131,14 +137,12 @@
         [SVProgressHUD dismiss];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     } failure:^(AFJSONRequestOperation *operation, NSError *error) {
-        NSString *message = [[operation responseJSON] objectForKey:@"error_description"];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:message
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        NSData *jsonData = [operation.responseString dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:0
+                                                               error:nil];
+        NSString *errorMessage = [json objectForKey:@"error"];
+        [SVProgressHUD showErrorWithStatus:errorMessage];
     }];
 }
 
@@ -236,6 +240,8 @@
 
 - (void)validateAndLogin
 {
+    // Validate the form fields, and if valid, call appropriate login method
+    
     if ([self validateFormFields]) {
         NSLog(@"Form Valid");
         //log in
