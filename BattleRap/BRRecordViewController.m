@@ -82,6 +82,7 @@
     
     self.backgroundbeat = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
     self.backgroundbeat.volume = 1.0;
+    [self.backgroundbeat prepareToPlay];
     
     // Define the recorder setting
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
@@ -89,12 +90,30 @@
     [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
     [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
     [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+    [recordSetting setValue:[NSNumber numberWithInt: AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
     
     // Initiate and prepare the recorder
-    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:NULL];
+    recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL
+                                           settings:recordSetting
+                                              error:NULL];
+
     recorder.delegate = self;
     [recorder prepareToRecord];
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (recorder.recording) {
+        [self stopRecording];
+    } else if (player.playing) {
+        [player stop];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -106,7 +125,6 @@
 #pragma mark - action methods
 
 - (void)controlButtonTapped:(id)sender {
-    NSLog(@"RecordPause tapped");
     
     if (!recorder.recording && !recordingComplete) {
         // Start recording
@@ -181,12 +199,6 @@
 
 - (void)cancelBattle:(id)sender
 {
-    if (recorder.recording) {
-        [self stopRecording];
-    } else if (player.playing) {
-        [player stop];
-    }
-    
     // TBD: code for setting battle object data to nil
     [self.presentingViewController dismissViewControllerAnimated:YES
                                                       completion:dismissBlock];
@@ -202,19 +214,23 @@
 #pragma mark - Animation Methods
 
 - (void)fadeText
-{
-    CABasicAnimation *textFade = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    textFade.fromValue = @1.0;
-    textFade.toValue = @0.0;
-    textFade.delegate = self;
-    textFade.duration = 0.2;
-    textFade.removedOnCompletion = NO;
-    //    CAMediaTimingFunction *tf = [CAMediaTimingFunction
-    //                                 functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    //    pulseFade.timingFunction = tf;
-    
-    [textFade setValue:@"textFade" forKey:@"id"];
-    [self.instructionsLabel.layer addAnimation:textFade forKey:@"textFade"];
+{    
+    [UIView animateWithDuration:0.2f
+                     animations:^{
+         self.instructionsLabel.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        NSLog(@"animation did stop");
+        timer = [NSTimer timerWithTimeInterval:1.0
+                                        target:self
+                                      selector:@selector(updateCountdown)
+                                      userInfo:nil
+                                       repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:42.0];
+        [self fadeInOutText];
+        self.instructionsLabel.text = @"3";
+        self.instructionsLabel.alpha = 1.0;
+    }];
 }
 
 - (void)fadeInOutText
@@ -222,8 +238,8 @@
     CAKeyframeAnimation *fadeInAndOut = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
     fadeInAndOut.duration = 1.0;
     fadeInAndOut.keyTimes = [NSArray arrayWithObjects:  [NSNumber numberWithFloat:0.0],
-                             [NSNumber numberWithFloat:0.17],
-                             [NSNumber numberWithFloat:0.83],
+                             [NSNumber numberWithFloat:0.20],
+                             [NSNumber numberWithFloat:0.80],
                              [NSNumber numberWithFloat:1.0], nil];
     
     fadeInAndOut.values = [NSArray arrayWithObjects:    [NSNumber numberWithFloat:0.0],
@@ -265,21 +281,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    NSLog(@"%@ finished: %d", anim, flag);
-    
-    //begin timer that initiates countdown and repeats 3x
-    if ([[anim valueForKey:@"id"] isEqualToString:@"textFade"]) {
-        NSLog(@"animation did stop");
-        timer = [NSTimer timerWithTimeInterval:1.0
-                                        target:self
-                                      selector:@selector(updateCountdown)
-                                      userInfo:nil
-                                       repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:42.0];
-        self.instructionsLabel.text = @"3";
-        [self fadeInOutText];
-    }
+
 }
 
 - (void)updateCountdown
@@ -294,10 +296,10 @@
     } else if (timerCount == 1) {
         [self fadeInOutText];
         self.instructionsLabel.text = @"2";
-        
+        [recorder prepareToRecord];
     } else if (timerCount == 2) {
-        self.instructionsLabel.text = @"1";
         [self fadeInOutText];
+        self.instructionsLabel.text = @"1";
         [self.backgroundbeat prepareToPlay];
     } else if (timerCount == 3) {
         [recorder recordForDuration:self.backgroundbeat.duration];
@@ -315,9 +317,10 @@
                             successfully:(BOOL)flag
 {
     // Check if complete recording was made. Duration will go to zero when
-    // recording complete
-    if (recordDuration > 0) {
-        NSLog(@"Recording duration: %f", recordDuration);
+    // recording complete. Will be >0 if recording incomplete.
+    NSLog(@"Record duration: %f", recordDuration);
+    
+    if (recordDuration != 0) {
         [self clearAndReset];
     } else {
         [self.recordPauseButton setImage:[UIImage imageNamed:@"PlayRecButton.png"]
@@ -325,8 +328,7 @@
         
         self.instructionsLabel.font = [UIFont fontWithName:@"Avenir-Medium" size:32.0];
         self.instructionsLabel.text = @"REVIEW YOUR VERSE";
-        
-//        sendToolbar.hidden = NO;
+
         [self showToolbar];
         recordingComplete = YES;
     }

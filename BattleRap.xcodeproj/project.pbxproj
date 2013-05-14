@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D563AEB173836AB00876C45 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1D563AEA173836AB00876C45 /* .gitignore */; };
 		1DA4A8BC1723F58900580656 /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8A01723F4A500580656 /* libJSONKit.a */; };
 		1DA4A8BD1723F59400580656 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8AB1723F4AE00580656 /* libOAuth2Client.a */; };
 		1DA4A8C31723F5AC00580656 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8C11723F5AB00580656 /* AddressBook.framework */; };
@@ -16,7 +15,6 @@
 		1DA4A8C81723F5C300580656 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8C71723F5C300580656 /* CoreText.framework */; };
 		1DA4A8CA1723F5CA00580656 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8C91723F5CA00580656 /* QuartzCore.framework */; };
 		1DA4A8CC1723F5D100580656 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA4A8CB1723F5D100580656 /* Security.framework */; };
-		1DA4A8CE1723F62500580656 /* SoundCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8CD1723F62500580656 /* SoundCloud.bundle */; };
 		1DA4A8E41724950700580656 /* noreclip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8E31724950700580656 /* noreclip.wav */; };
 		1DA4A8FE1724956100580656 /* ModalNavBar-L6-T0.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */; };
 		1DA4A8FF1724956100580656 /* ModalNavBar-L6-T0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */; };
@@ -49,6 +47,10 @@
 		1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */; };
 		1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1DE4B2431723B00C00154B90 /* drakebeat.wav */; };
 		693D6A501738388F00B6993B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 693D6A4F1738388F00B6993B /* .gitignore */; };
+		69AF9839173C0E4F009A1E38 /* BRUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF9838173C0E4F009A1E38 /* BRUser.m */; };
+		69B08A3117396FF10056987F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B08A3017396FF10056987F /* SystemConfiguration.framework */; };
+		69B08A3317396FFC0056987F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B08A3217396FFC0056987F /* MobileCoreServices.framework */; };
+		69B08A36173970740056987F /* BRHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B08A35173970740056987F /* BRHTTPClient.m */; };
 		69C0866117332E36000D042D /* RecordViewPauseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0865F17332E36000D042D /* RecordViewPauseBtn.png */; };
 		69C0866217332E36000D042D /* RecordViewPauseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */; };
 		69E9163A172399EF00A0F9BF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E91639172399EF00A0F9BF /* LoginView.xib */; };
@@ -69,6 +71,7 @@
 		69EB53A117233FD3002E0127 /* BRBattleViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EB53A017233FD3002E0127 /* BRBattleViewCell.m */; };
 		69EB53A3172343FF002E0127 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EB53A2172343FF002E0127 /* AVFoundation.framework */; };
 		69F2241617307E5A0052418F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F2241517307E5A0052418F /* AudioToolbox.framework */; };
+		BF95F91B11EF4CBE9F7F7D68 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4662F36CAE4C32B4503156 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +120,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1D563AEA173836AB00876C45 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = BattleRap/.gitignore; sourceTree = "<group>"; };
 		1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBattleStoreDelegate.h; sourceTree = "<group>"; };
 		1DA4A89A1723F4A400580656 /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
 		1DA4A8A31723F4AE00580656 /* OAuth2Client.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OAuth2Client.xcodeproj; path = OAuth2Client/OAuth2Client.xcodeproj; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 		1DA4A8C71723F5C300580656 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1DA4A8C91723F5CA00580656 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1DA4A8CB1723F5D100580656 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1DA4A8CD1723F62500580656 /* SoundCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SoundCloud.bundle; sourceTree = "<group>"; };
 		1DA4A8E31724950700580656 /* noreclip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noreclip.wav; sourceTree = "<group>"; };
 		1DA4A8E91724956000580656 /* ModalNavBar-L6-T0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavBar-L6-T0.png"; sourceTree = "<group>"; };
 		1DA4A8EA1724956000580656 /* ModalNavBar-L6-T0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ModalNavBar-L6-T0@2x.png"; sourceTree = "<group>"; };
@@ -161,6 +162,12 @@
 		1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cyclebeat.wav; sourceTree = "<group>"; };
 		1DE4B2431723B00C00154B90 /* drakebeat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drakebeat.wav; sourceTree = "<group>"; };
 		693D6A4F1738388F00B6993B /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		69AF9837173C0E4F009A1E38 /* BRUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRUser.h; sourceTree = "<group>"; };
+		69AF9838173C0E4F009A1E38 /* BRUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRUser.m; sourceTree = "<group>"; };
+		69B08A3017396FF10056987F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		69B08A3217396FFC0056987F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		69B08A34173970740056987F /* BRHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRHTTPClient.h; sourceTree = "<group>"; };
+		69B08A35173970740056987F /* BRHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRHTTPClient.m; sourceTree = "<group>"; };
 		69C0865F17332E36000D042D /* RecordViewPauseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RecordViewPauseBtn.png; sourceTree = "<group>"; };
 		69C0866017332E36000D042D /* RecordViewPauseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RecordViewPauseBtn@2x.png"; sourceTree = "<group>"; };
 		69E91639172399EF00A0F9BF /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
@@ -191,6 +198,8 @@
 		69EB53A017233FD3002E0127 /* BRBattleViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRBattleViewCell.m; sourceTree = "<group>"; };
 		69EB53A2172343FF002E0127 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		69F2241517307E5A0052418F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		AE4662F36CAE4C32B4503156 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA3ED63EF4D43A69A2CE5B5 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +207,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69B08A3317396FFC0056987F /* MobileCoreServices.framework in Frameworks */,
+				69B08A3117396FF10056987F /* SystemConfiguration.framework in Frameworks */,
 				69F2241617307E5A0052418F /* AudioToolbox.framework in Frameworks */,
 				1DA4A8CC1723F5D100580656 /* Security.framework in Frameworks */,
 				1DA4A8CA1723F5CA00580656 /* QuartzCore.framework in Frameworks */,
@@ -211,6 +222,7 @@
 				69EB53A3172343FF002E0127 /* AVFoundation.framework in Frameworks */,
 				69EB536817230856002E0127 /* UIKit.framework in Frameworks */,
 				69EB536A17230856002E0127 /* Foundation.framework in Frameworks */,
+				BF95F91B11EF4CBE9F7F7D68 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,14 +285,33 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		69AF984A173D9522009A1E38 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				69EB537617230856002E0127 /* BRAppDelegate.h */,
+				69EB537717230856002E0127 /* BRAppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		69B08A2D17396C6A0056987F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				69B08A34173970740056987F /* BRHTTPClient.h */,
+				69B08A35173970740056987F /* BRHTTPClient.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		69EB535817230856002E0127 = {
 			isa = PBXGroup;
 			children = (
 				1DA4A8A31723F4AE00580656 /* OAuth2Client.xcodeproj */,
 				1DA4A89A1723F4A400580656 /* JSONKit.xcodeproj */,
-				69EB536D17230856002E0127 /* BattleRap */,
+				69EB536D17230856002E0127 /* Classes */,
 				69EB536617230856002E0127 /* Frameworks */,
 				69EB536417230856002E0127 /* Products */,
+				FCA3ED63EF4D43A69A2CE5B5 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -295,6 +326,8 @@
 		69EB536617230856002E0127 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69B08A3217396FFC0056987F /* MobileCoreServices.framework */,
+				69B08A3017396FF10056987F /* SystemConfiguration.framework */,
 				69F2241517307E5A0052418F /* AudioToolbox.framework */,
 				1DA4A8CB1723F5D100580656 /* Security.framework */,
 				1DA4A8C91723F5CA00580656 /* QuartzCore.framework */,
@@ -306,28 +339,29 @@
 				69EB536717230856002E0127 /* UIKit.framework */,
 				69EB536917230856002E0127 /* Foundation.framework */,
 				69EB536B17230856002E0127 /* CoreGraphics.framework */,
+				AE4662F36CAE4C32B4503156 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		69EB536D17230856002E0127 /* BattleRap */ = {
+		69EB536D17230856002E0127 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				69B08A2D17396C6A0056987F /* Networking */,
 				69EB538D172309AB002E0127 /* Models */,
 				69EB538C17230998002E0127 /* Controllers */,
 				69EB538B17230992002E0127 /* Views */,
-				69EB537617230856002E0127 /* BRAppDelegate.h */,
-				69EB537717230856002E0127 /* BRAppDelegate.m */,
+				69AF984A173D9522009A1E38 /* App Delegate */,
 				6973A253172352540027C514 /* Resources */,
 				69EB536E17230856002E0127 /* Supporting Files */,
 			);
+			name = Classes;
 			path = BattleRap;
 			sourceTree = "<group>";
 		};
 		69EB536E17230856002E0127 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1DA4A8CD1723F62500580656 /* SoundCloud.bundle */,
 				1DE4B2431723B00C00154B90 /* drakebeat.wav */,
 				1DE4B23F1723AFFD00154B90 /* cyclebeat.wav */,
 				69EB536F17230856002E0127 /* BattleRap-Info.plist */,
@@ -375,6 +409,8 @@
 				1DE4B23A1723AFF200154B90 /* BRBattleStore.h */,
 				1DE4B23B1723AFF200154B90 /* BRBattleStore.m */,
 				1DA4A8871723D78700580656 /* BRBattleStoreDelegate.h */,
+				69AF9837173C0E4F009A1E38 /* BRUser.h */,
+				69AF9838173C0E4F009A1E38 /* BRUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -386,9 +422,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69EB538117230857002E0127 /* Build configuration list for PBXNativeTarget "BattleRap" */;
 			buildPhases = (
+				0C4375E5840748B1AA082E94 /* Check Pods Manifest.lock */,
 				69EB535F17230856002E0127 /* Sources */,
 				69EB536017230856002E0127 /* Frameworks */,
 				69EB536117230856002E0127 /* Resources */,
+				6E87317143C441979527182D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -482,7 +520,6 @@
 				1DE4B2401723AFFD00154B90 /* BRRecordViewController.xib in Resources */,
 				1DE4B2421723AFFD00154B90 /* cyclebeat.wav in Resources */,
 				1DE4B2441723B00C00154B90 /* drakebeat.wav in Resources */,
-				1DA4A8CE1723F62500580656 /* SoundCloud.bundle in Resources */,
 				1DA4A8E41724950700580656 /* noreclip.wav in Resources */,
 				1DA4A8FE1724956100580656 /* ModalNavBar-L6-T0.png in Resources */,
 				1DA4A8FF1724956100580656 /* ModalNavBar-L6-T0@2x.png in Resources */,
@@ -518,6 +555,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0C4375E5840748B1AA082E94 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		6E87317143C441979527182D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		69EB535F17230856002E0127 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -532,6 +600,8 @@
 				69EB53A117233FD3002E0127 /* BRBattleViewCell.m in Sources */,
 				69E9163D17239C6500A0F9BF /* BRLoginViewController.m in Sources */,
 				1DE4B23C1723AFF200154B90 /* BRBattleStore.m in Sources */,
+				69B08A36173970740056987F /* BRHTTPClient.m in Sources */,
+				69AF9839173C0E4F009A1E38 /* BRUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -614,6 +684,7 @@
 		};
 		69EB538217230857002E0127 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA3ED63EF4D43A69A2CE5B5 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BattleRap/BattleRap-Prefix.pch";
@@ -631,6 +702,7 @@
 		};
 		69EB538317230857002E0127 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA3ED63EF4D43A69A2CE5B5 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BattleRap/BattleRap-Prefix.pch";

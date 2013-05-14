@@ -8,15 +8,9 @@
 
 #import "BRAppDelegate.h"
 #import "BRListViewController.h"
+#import "SVProgressHUD.h"
 
 @implementation BRAppDelegate
-
-+ (void) initialize
-{
-//    [SCSoundCloud setClientID:@"3862011599336e748be1504d4f80af27"
-//                       secret:@"6ed1e28b7c6d26ee8278655ae9fe9ddf"
-//                  redirectURL:[NSURL URLWithString:@"rapchat.co://oauth"]];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -95,8 +89,12 @@
 	[barButton setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, -1.0f) forBarMetrics:UIBarMetricsDefault];
 	[barButton setBackButtonBackgroundImage:[[UIImage imageNamed:@"ModalNavRectBtn-L4-T0-normal"] stretchableImageWithLeftCapWidth:4 topCapHeight:0] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
-    
-    
+    // SVProgressHUD
+    SVProgressHUD *progressHUD = [SVProgressHUD appearance];
+    [progressHUD setHudBackgroundColor:[UIColor blackColor]];
+    [progressHUD setHudForegroundColor:[UIColor whiteColor]];
+    [progressHUD setHudFont:[UIFont fontWithName:@"Avenir-Heavy" size:16]];
+
 }
 
 @end
